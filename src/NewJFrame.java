@@ -157,18 +157,16 @@ public class NewJFrame extends javax.swing.JFrame {
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "Johnny";
+            String serverName = "myGlobe";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
-            String username = new String(jTextField1.getText());
-            String password = new String(jPasswordField1.getPassword());
+            String username = "DBMS";
+            String password = "DBMS";
             conn = DriverManager.getConnection(url, username, password);
 
             System.out.println("Successfully Connected to the database");
-
-            //Employee_info s= new Employee_info();
-            //s.setVisible(true);
+            
             try {
                 Statement st = conn.createStatement();
                 ResultSet rs;
