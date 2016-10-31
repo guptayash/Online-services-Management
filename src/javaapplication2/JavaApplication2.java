@@ -21,19 +21,19 @@ public class JavaApplication2 {
         try {
             String driverName="oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName="Johnny";
+            String serverName="myGlobe";
             String serverPort ="1521";
             String sid="XE";
             String url="jdbc:oracle:thin:@" + serverName + ":" +serverPort + ":" + sid;
-            String username="BCE0662";
-            String password="BCE0662";
+            String username="DBMS";
+            String password="DBMS";
             conn=DriverManager.getConnection(url,username,password);
             System.out.println("Successfully Connected to the database");
         }
         catch (ClassNotFoundException e) {
-            System.out.println("Could not find the database driver" +e.getMessage());
+            System.out.println("Could not find the database driver " +e.getMessage());
         } catch (SQLException e) {
-            System.out.println("Could not connect to the database" + e.getMessage());
+            System.out.println("Could not connect to the database " + e.getMessage());
             
         }
         
