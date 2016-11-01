@@ -289,17 +289,21 @@ public void CurrentDate(){
         long ph = Long.parseLong(jTextField2.getText());
         String addr = jTextField3.getText();
         String email = jTextField4.getText();
-        int productCategory = jComboBox1.getSelectedIndex();
+        int productCategory = jComboBox2.getSelectedIndex();
         productCategory = productCategory+1; // Index starts with zero. 
         String shopkeeperID = jLabel1.getText();
         
         try{
             Statement st = conn.createStatement();
             ResultSet rs=null;
+            
             rs = st.executeQuery("select count(shopCode) from shopdetails");
+            rs.next();
             int shopCode = rs.getInt(1);
             shopCode = shopCode+1;
-            rs = st.executeQuery("insert into shopdetails values("+shopCode+",'"+shopName+"',"+areaCode+","+ph+",'"+addr+"','"+email+"',"+productCategory+","+shopkeeperID+")");
+            rs = st.executeQuery("insert into shopdetails values("+shopCode+",'"+shopName+"',"+areaCode+","+ph+",'"+addr+"','"+email+"',"+productCategory+",'"+shopkeeperID+"')");
+            
+            rs.close();
         }
         catch (SQLException e) {
             System.out.println(e.getMessage());
