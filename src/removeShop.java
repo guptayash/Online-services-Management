@@ -225,20 +225,16 @@ public class removeShop extends javax.swing.JFrame {
                 
                 Statement st = conn.createStatement();
                 ResultSet rs=null;
-                int shopCode= jTextField1.getInt();
-               
-                rs = st.executeQuery("delete from userinfo where id="+shopCode+"");
-                
-                
-                
+                int shopCode= Integer.parseInt(jTextField1.getText());
+                System.out.println(shopCode);               
+                rs = st.executeQuery("delete from shopdetails where shopcode="+shopCode);
                 rs.close();
             } catch (Exception e) {
 
                 e.printStackTrace();
             }
     // TODO add your handling code here:
-    }
-
+    
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
