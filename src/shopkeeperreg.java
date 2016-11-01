@@ -244,22 +244,23 @@ public void CurrentDate(){
             Statement st = conn.createStatement();
             ResultSet rs=null;
             rs = st.executeQuery("insert into accounts values('"+id+"','"+pass1+"','SHOPOWNER')");
-            
+            shopdetails sd = new shopdetails();
+            sd.setVisible(true);
+            sd.jLabel1.setText(this.jTextField1.getText());
+            shopkeeperreg.this.dispose();            
         }
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         
-        adminLanding frame = new adminLanding();
-        frame.setVisible(true);
-        shopkeeperreg.this.dispose();
+  
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         adminLanding frame = new adminLanding();
         frame.setVisible(true);
-        shopkeeperreg.this.dispose();        
+        shopkeeperreg.this.dispose();       
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
