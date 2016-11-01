@@ -173,8 +173,6 @@ public class NewJFrame extends javax.swing.JFrame {
             String password = "DBMS";
             conn = DriverManager.getConnection(url, username, password);
             System.out.println("Successfully Connected to the database");
-            
-            
 
         } catch (ClassNotFoundException e) {
             System.out.println("Could not find the database driver" + e.getMessage());
@@ -193,7 +191,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 Service_Registration Sr=new Service_Registration();
                 while (rs.next()){
                     
-                    if(user_id.contains(rs.getString(1)) && pass.contains(rs.getString(2)))
+                    if(user_id.equals(rs.getString(1)) && pass.equals(rs.getString(2)))
                     {
                         Sr.setVisible(true);
                         NewJFrame.this.dispose();
