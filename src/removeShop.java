@@ -1,5 +1,10 @@
 
 import static java.lang.Thread.sleep;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
@@ -104,6 +109,11 @@ public class removeShop extends javax.swing.JFrame {
         jLabel5.setText("Shop Code");
 
         jButton2.setText("Delete Shop");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Back");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -191,6 +201,50 @@ public class removeShop extends javax.swing.JFrame {
         removeShop.this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Connection conn = null;
+        try {
+            String driverName = "oracle.jdbc.driver.OracleDriver";
+            Class.forName(driverName);
+            String serverName = "myGlobe";
+            String serverPort = "1521";
+            String sid = "XE";
+            String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
+            String username = "DBMS";
+            String password = "DBMS";
+            conn = DriverManager.getConnection(url, username, password);
+            System.out.println("Successfully Connected to the database");
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Could not find the database driver" + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Could not connect to the database" + e.getMessage());
+            jLabel4.setText("Invalid Credentials; Logon Denied!");
+        }
+        try {
+                
+                Statement st = conn.createStatement();
+                ResultSet rs=null;
+                String user_name=jLabel1.getText();
+               
+                rs = st.executeQuery("select address, phonenumber  from USERINFO where id='"+user_name+"'");
+                while (rs.next()){
+                    jLabel12.setText(rs.getString(1).toUpperCase());
+                    jLabel13.setText(rs.getString(2).toUpperCase());
+                    }
+                
+                
+                rs.close();
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+    // TODO add your handling code here:
+    }
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
