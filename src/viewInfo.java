@@ -1,3 +1,10 @@
+
+import static java.lang.Thread.sleep;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,6 +22,48 @@ public class viewInfo extends javax.swing.JFrame {
      */
     public viewInfo() {
         initComponents();
+        CurrentDate();
+        CurrentTime();
+    }
+    
+     public void CurrentDate(){
+    Calendar cal= new GregorianCalendar();
+    int month=cal.get(Calendar.MONTH);
+    int year=cal.get(Calendar.YEAR);
+    int day= cal.get(Calendar.DAY_OF_MONTH);
+    jLabel2.setText("Date:  "+year+"-"+(month+1)+"-"+day);
+    Thread clock=new Thread(){
+        public void run(){
+            for(;;){
+                try {
+                    sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Service_Registration.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    };
+    clock.start();
+    }
+    public void CurrentTime(){
+    
+    Thread clock=new Thread(){
+        public void run(){
+            for(;;){
+                Calendar cal=new GregorianCalendar();
+    int Second=cal.get(Calendar.SECOND);
+    int Min=cal.get(Calendar.MINUTE);
+    int Hour=cal.get(Calendar.HOUR_OF_DAY);
+    jLabel3.setText("Time: "+Hour+":"+Min+":"+Second);
+                try {
+                    sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Service_Registration.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    };
+    clock.start();
     }
 
     /**
@@ -58,6 +107,11 @@ public class viewInfo extends javax.swing.JFrame {
         jLabel3.setText("Time: ");
 
         jButton1.setText("Log Out");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Displaying Information for");
 
@@ -91,7 +145,7 @@ public class viewInfo extends javax.swing.JFrame {
 
         jLabel19.setText("jLabel19");
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -210,6 +264,15 @@ public class viewInfo extends javax.swing.JFrame {
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        NewJFrame frame = new NewJFrame();
+        frame.setVisible(true);
+        viewInfo.this.dispose();
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
