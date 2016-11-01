@@ -179,7 +179,6 @@ public class NewJFrame extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println("Could not connect to the database" + e.getMessage());
             jLabel4.setText("Invalid Credentials; Logon Denied!");
-            jTextField1.isEditable();
         }
         try {
                 
@@ -194,6 +193,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     if(user_id.equals(rs.getString(1)) && pass.equals(rs.getString(2)))
                     {
                         Sr.setVisible(true);
+                        Sr.jLabel1.setText(this.jTextField1.getText());
                         NewJFrame.this.dispose();
                     }
                     else
