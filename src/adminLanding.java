@@ -1,3 +1,10 @@
+
+import static java.lang.Thread.sleep;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,6 +22,47 @@ public class adminLanding extends javax.swing.JFrame {
      */
     public adminLanding() {
         initComponents();
+        CurrentDate();
+        CurrentTime();
+    }
+    public void CurrentDate(){
+    Calendar cal= new GregorianCalendar();
+    int month=cal.get(Calendar.MONTH);
+    int year=cal.get(Calendar.YEAR);
+    int day= cal.get(Calendar.DAY_OF_MONTH);
+    jLabel2.setText("Date:  "+year+"-"+(month+1)+"-"+day);
+    Thread clock=new Thread(){
+        public void run(){
+            for(;;){
+                try {
+                    sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Service_Registration.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    };
+    clock.start();
+    }
+    public void CurrentTime(){
+    
+    Thread clock=new Thread(){
+        public void run(){
+            for(;;){
+                Calendar cal=new GregorianCalendar();
+    int Second=cal.get(Calendar.SECOND);
+    int Min=cal.get(Calendar.MINUTE);
+    int Hour=cal.get(Calendar.HOUR_OF_DAY);
+    jLabel3.setText("Time: "+Hour+":"+Min+":"+Second);
+                try {
+                    sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Service_Registration.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    };
+    clock.start();
     }
 
     /**
@@ -53,6 +101,11 @@ public class adminLanding extends javax.swing.JFrame {
         });
 
         jButton2.setText("Shopkeeper Registration");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Shop Registration");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +192,9 @@ public class adminLanding extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        NewJFrame frame = new NewJFrame();
+        frame.setVisible(true);
+        adminLanding.this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -153,6 +208,12 @@ public class adminLanding extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        shopkeeperreg frame = new shopkeeperreg();
+        frame.setVisible(true);
+        adminLanding.this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
