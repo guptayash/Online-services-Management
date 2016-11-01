@@ -115,6 +115,11 @@ public class adminLanding extends javax.swing.JFrame {
         });
 
         jButton4.setText("Remove Shop");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Remove Shopkeeper");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -214,6 +219,10 @@ public class adminLanding extends javax.swing.JFrame {
         frame.setVisible(true);
         adminLanding.this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

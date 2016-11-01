@@ -285,11 +285,9 @@ Sign_up.this.dispose();// TODO add your handling code here:
             System.out.println("Could not find the database driver" + e.getMessage());
         } catch (SQLException e) {
             System.out.println("Could not connect to the database" + e.getMessage());
-<<<<<<< HEAD
-=======
+
             jTextField1.isEditable();
->>>>>>> origin/master
-        }
+       }
         
         String FName = jTextField1.getText();
         String LName = jTextField2.getText();

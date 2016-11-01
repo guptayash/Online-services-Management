@@ -165,7 +165,7 @@ public class NewJFrame extends javax.swing.JFrame {
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -181,7 +181,6 @@ public class NewJFrame extends javax.swing.JFrame {
             jLabel4.setText("Invalid Credentials; Logon Denied!");
         }
         try {
-                
                 Statement st = conn.createStatement();
                 ResultSet rs=null;
                 String user_id= new String(jTextField1.getText());
