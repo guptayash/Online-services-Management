@@ -17,10 +17,14 @@ import java.sql.*;
  * @author Yash
  */
 public class NewJFrame extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form NewJFrame
      */
+    Connection conn;
+   
+    
     public NewJFrame() {
         initComponents();
     }
@@ -49,8 +53,13 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(102, 102, 255));
         jButton1.setFont(new java.awt.Font("Century Schoolbook", 0, 11)); // NOI18N
@@ -153,43 +162,27 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Connection conn = null;
-        try {
-            String driverName = "oracle.jdbc.driver.OracleDriver";
-            Class.forName(driverName);
-            String serverName = "myGlobe";
-            String serverPort = "1521";
-            String sid = "XE";
-            String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
-            String username = "DBMS";
-            String password = "DBMS";
-            conn = DriverManager.getConnection(url, username, password);
-
-            System.out.println("Successfully Connected to the database");
-            
-            try {
-                Statement st = conn.createStatement();
+try {
+                Connection conn=null;
+                Statement st;
+    st = conn.createStatement();
                 ResultSet rs;
-                rs = st.executeQuery("select Constraint_name, constraint_type from user_constraints where table_name='EMPLOYEE'");
-                while (rs.next()) {
-                    String SSN_Number = rs.getString(1).toString();
-                    String Num = rs.getString(2).toString();
-
-                    System.out.println(Num + "\t" + SSN_Number);
-                }
+                String id= new String(jTextField1.getText());
+                String password=new String(jPasswordField1.getText());
+                rs = st.executeQuery("select id,password  from Accounts");
+                Service_Registration SR=new Service_Registration();
+                while (rs.next()){
+                        
+                    System.out.println(rs);
+                }                
+                        
+                
+                
                 rs.close();
             } catch (Exception e) {
 
                 e.printStackTrace();
             }
-
-        } catch (ClassNotFoundException e) {
-            System.out.println("Could not find the database driver" + e.getMessage());
-        } catch (SQLException e) {
-            System.out.println("Could not connect to the database" + e.getMessage());
-            jLabel4.setText("Invalid Credentials; Logon Denied!");
-            jTextField1.isEditable();
-        }
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -199,6 +192,31 @@ Sign_up SignUp=new Sign_up();
 SignUp.setVisible(true);
 NewJFrame.this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+            Connection conn = null;
+        try {
+            String driverName = "oracle.jdbc.driver.OracleDriver";
+            Class.forName(driverName);
+            String serverName = "Johnny";
+            String serverPort = "1521";
+            String sid = "XE";
+            String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
+            String username = "DBMS";
+            String password = "DBMS";
+            conn = DriverManager.getConnection(url, username, password);
+            System.out.println("Successfully Connected to the database");
+            
+            
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Could not find the database driver" + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Could not connect to the database" + e.getMessage());
+            jLabel4.setText("Invalid Credentials; Logon Denied!");
+            jTextField1.isEditable();
+        }   // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
