@@ -63,7 +63,7 @@ public class Service_Registration extends javax.swing.JFrame {
     int Second=cal.get(Calendar.SECOND);
     int Min=cal.get(Calendar.MINUTE);
     int Hour=cal.get(Calendar.HOUR_OF_DAY);
-    jLabel3.setText("Time"+Hour+":"+Min+":"+Second);
+    jLabel3.setText("Time: "+Hour+":"+Min+":"+Second);
                 try {
                     sleep(1000);
                 } catch (InterruptedException ex) {
