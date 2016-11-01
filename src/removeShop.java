@@ -220,19 +220,15 @@ public class removeShop extends javax.swing.JFrame {
             System.out.println("Could not find the database driver" + e.getMessage());
         } catch (SQLException e) {
             System.out.println("Could not connect to the database" + e.getMessage());
-            jLabel4.setText("Invalid Credentials; Logon Denied!");
         }
         try {
                 
                 Statement st = conn.createStatement();
                 ResultSet rs=null;
-                String user_name=jLabel1.getText();
+                int shopCode= jTextField1.getInt();
                
-                rs = st.executeQuery("select address, phonenumber  from USERINFO where id='"+user_name+"'");
-                while (rs.next()){
-                    jLabel12.setText(rs.getString(1).toUpperCase());
-                    jLabel13.setText(rs.getString(2).toUpperCase());
-                    }
+                rs = st.executeQuery("delete from userinfo where id="+shopCode+"");
+                
                 
                 
                 rs.close();
