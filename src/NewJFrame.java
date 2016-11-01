@@ -1,5 +1,5 @@
 
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.awt.*;
@@ -22,7 +22,6 @@ public class NewJFrame extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    Connection conn;
    
     
     public NewJFrame() {
@@ -162,39 +161,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-try {
-                Connection conn=null;
-                Statement st;
-    st = conn.createStatement();
-                ResultSet rs;
-                String id= new String(jTextField1.getText());
-                String password=new String(jPasswordField1.getText());
-                rs = st.executeQuery("select id,password  from Accounts");
-                Service_Registration SR=new Service_Registration();
-                while (rs.next()){
-                        
-                    System.out.println(rs);
-                }                
-                        
-                
-                
-                rs.close();
-            } catch (Exception e) {
-
-                e.printStackTrace();
-            }
-
-// TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-Sign_up SignUp=new Sign_up();
-SignUp.setVisible(true);
-NewJFrame.this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-            Connection conn = null;
+        Connection conn = null;
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
@@ -215,7 +182,47 @@ NewJFrame.this.dispose();// TODO add your handling code here:
             System.out.println("Could not connect to the database" + e.getMessage());
             jLabel4.setText("Invalid Credentials; Logon Denied!");
             jTextField1.isEditable();
-        }   // TODO add your handling code here:
+        }
+        try {
+                
+                Statement st = conn.createStatement();
+                ResultSet rs=null;
+                String user_id= new String(jTextField1.getText());
+                String pass=new String(jPasswordField1.getText());
+                rs = st.executeQuery("select id,password  from Accounts");
+                Service_Registration Sr=new Service_Registration();
+                while (rs.next()){
+                    
+                    if(user_id.contains(rs.getString(1)) && pass.contains(rs.getString(2)))
+                    {
+                        Sr.setVisible(true);
+                        NewJFrame.this.dispose();
+                    }
+                    else
+                    {
+                        jLabel4.setText("Invalid credential! Login Denied!");
+                    
+                    }
+                    }
+                
+                
+                rs.close();
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+Sign_up SignUp=new Sign_up();
+SignUp.setVisible(true);
+NewJFrame.this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+               // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
 
     /**
