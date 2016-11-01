@@ -237,6 +237,10 @@ public void CurrentDate(){
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        adminLanding frame = new adminLanding();
+        frame.setVisible(true);
+        shopkeeperreg.this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
