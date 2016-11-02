@@ -384,20 +384,20 @@ public class editShopProfile extends javax.swing.JFrame {
                     String PC = rs.getString(7);
                     if(PC.equals("1"))
                     {
-                        jComboBox1.setSelectedIndex(0);
+                        jComboBox2.setSelectedIndex(0);
                     
                     }
                     else if(PC.equals("2"))
                     {
-                        jComboBox1.setSelectedIndex(1);
+                        jComboBox2.setSelectedIndex(1);
                     }
                     else if(PC.equals("3"))
                     {
-                        jComboBox1.setSelectedIndex(2);
+                        jComboBox2.setSelectedIndex(2);
                     }
                     else if(PC.equals("4"))
                     {
-                        jComboBox1.setSelectedIndex(3);
+                        jComboBox2.setSelectedIndex(3);
                     }
                     }
                 
