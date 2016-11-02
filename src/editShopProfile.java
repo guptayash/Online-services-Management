@@ -58,6 +58,11 @@ public class editShopProfile extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel5.setText("Edit Your Shop Details!");
 
@@ -81,6 +86,17 @@ public class editShopProfile extends javax.swing.JFrame {
         });
 
         jButton3.setText("Submit");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField6KeyPressed(evt);
+            }
+        });
 
         jLabel12.setText("User Name");
 
@@ -94,6 +110,8 @@ public class editShopProfile extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+
+        jPasswordField1.setText("password");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "North Delhi", "South Delhi", "East Delhi", "West Delhi" }));
 
@@ -142,10 +160,11 @@ public class editShopProfile extends javax.swing.JFrame {
                             .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton3)
-                        .addGap(80, 80, 80)
+                        .addGap(62, 62, 62)
                         .addComponent(jButton2)
-                        .addGap(50, 50, 50)
-                        .addComponent(jButton1)))
+                        .addGap(62, 62, 62)
+                        .addComponent(jButton1)
+                        .addGap(9, 9, 9)))
                 .addGap(28, 28, 28)
                 .addComponent(jButton4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -266,6 +285,132 @@ public class editShopProfile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Connection conn = null;
+        try {
+            String driverName = "oracle.jdbc.driver.OracleDriver";
+            Class.forName(driverName);
+            String serverName = "myGlobe";
+            String serverPort = "1521";
+            String sid = "XE";
+            String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
+            String username = "DBMS";
+            String password = "DBMS";
+            conn = DriverManager.getConnection(url, username, password);
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Could not find the database driver" + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Could not connect to the database" + e.getMessage());
+        }
+        try {
+                Statement st = conn.createStatement();
+                ResultSet rs=null;
+                String sn= new String(jTextField1.getText());
+                int ac=jComboBox1.getSelectedIndex();
+                ac++;
+                String user_id=new String(jTextField6.getText());
+                long Ph_No=Long.parseLong(jTextField3.getText());
+                String Email=new String(jTextField5.getText());
+                String Address=new String(jTextField4.getText());
+                int pc=jComboBox2.getSelectedIndex();
+                pc++;
+                rs = st.executeQuery("update shopdetails set shopname='"+sn+"',areacode="+ac+", phonenumber='"+Ph_No+"', Emailid='"+Email+"', address='"+Address+"', productcategory="+pc+" where shopkeeper='"+user_id+"'");
+                jOptionPane1.showMessageDialog(null,"Record updated");
+                
+                
+                rs.close();
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }// TODO add your handling code here:
+    
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6KeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        Connection conn = null;
+        jTextField6.setEditable(false);
+        jPasswordField1.setEditable(false);
+        try {
+            String driverName = "oracle.jdbc.driver.OracleDriver";
+            Class.forName(driverName);
+            String serverName = "myGlobe";
+            String serverPort = "1521";
+            String sid = "XE";
+            String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
+            String username = "DBMS";
+            String password = "DBMS";
+            conn = DriverManager.getConnection(url, username, password);
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Could not find the database driver" + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Could not connect to the database" + e.getMessage());
+        }
+        try {
+                Statement st = conn.createStatement();
+                ResultSet rs=null;
+                String user_name=jTextField6.getText();
+                rs = st.executeQuery("select * from shopdetails where shopkeeper='"+user_name+"'");
+                while (rs.next()){
+                    jTextField1.setText(rs.getString(2).toUpperCase());
+                    jTextField3.setText(rs.getString(4));
+                    jTextField4.setText(rs.getString(5));
+                    jTextField5.setText(rs.getString(6));
+                    String AreaCode=rs.getString(3);
+                    if(AreaCode.equals("1"))
+                    {
+                        jComboBox1.setSelectedIndex(0);
+                    
+                    }
+                    else if(AreaCode.equals("2"))
+                    {
+                        jComboBox1.setSelectedIndex(1);
+                    }
+                    else if(AreaCode.equals("3"))
+                    {
+                        jComboBox1.setSelectedIndex(2);
+                    }
+                    else if(AreaCode.equals("4"))
+                    {
+                        jComboBox1.setSelectedIndex(3);
+                    }
+                    String PC = rs.getString(7);
+                    if(PC.equals("1"))
+                    {
+                        jComboBox1.setSelectedIndex(0);
+                    
+                    }
+                    else if(PC.equals("2"))
+                    {
+                        jComboBox1.setSelectedIndex(1);
+                    }
+                    else if(PC.equals("3"))
+                    {
+                        jComboBox1.setSelectedIndex(2);
+                    }
+                    else if(PC.equals("4"))
+                    {
+                        jComboBox1.setSelectedIndex(3);
+                    }
+                    }
+                
+                
+                rs.close();
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -324,6 +469,6 @@ public class editShopProfile extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    public javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }
