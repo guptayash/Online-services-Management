@@ -278,7 +278,7 @@ Sign_up.this.dispose();// TODO add your handling code here:
             String username = "DBMS";
             String password = "DBMS";
             conn = DriverManager.getConnection(url, username, password);
-            System.out.println("Successfully Connected to the database");
+
             
 
         } catch (ClassNotFoundException e) {

@@ -335,7 +335,7 @@ Edit.setVisible(true);
             String username = "DBMS";
             String password = "DBMS";
             conn = DriverManager.getConnection(url, username, password);
-            System.out.println("Successfully Connected to the database");
+
 
         } catch (ClassNotFoundException e) {
             System.out.println("Could not find the database driver" + e.getMessage());

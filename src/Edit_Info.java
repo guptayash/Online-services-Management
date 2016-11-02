@@ -229,7 +229,7 @@ public class Edit_Info extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-System.exit(0);// TODO add your handling code here:
+Edit_Info.this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -322,7 +322,7 @@ jPasswordField1.setEditable(false);
                 ResultSet rs=null;
                 String user_name=jTextField3.getText();
                
-                rs = st.executeQuery("select Fname, Lname, phonenumber, emailid, address,DOB, Areacode from USERINFO where id='"+user_name+"'");
+                rs = st.executeQuery("select Fname, Lname, phonenumber, emailid, address, TO_CHAR(DOB,'DD-Mon-YYYY'), Areacode from USERINFO where id='"+user_name+"'");
                 while (rs.next()){
                     jTextField1.setText(rs.getString(1).toUpperCase());
                     jTextField2.setText(rs.getString(2).toUpperCase());
@@ -330,7 +330,6 @@ jPasswordField1.setEditable(false);
                     jTextField5.setText(rs.getString(4));
                     jTextField6.setText(rs.getString(5));
                     jTextField7.setText(rs.getString(6));
-                    System.out.println(rs.getString(6));
                     String AreaCode=rs.getString(7);
                     if(AreaCode.equals("1"))
                     {
@@ -393,7 +392,9 @@ jPasswordField1.setEditable(false);
                 String Email=new String(jTextField5.getText());
                 String Address=new String(jTextField6.getText());
                 String DOB=new String(jTextField7.getText());
-                rs = st.executeQuery("update userinfo set fname='"+Fname+"',lname='"+Lname+"', phonenumber='"+Ph_No+"', Emailid='"+Email+"', address='"+Address+"', DOB='"+DOB+"' where id='"+user_id+"'");
+                int index=jComboBox1.getSelectedIndex();
+                index++;
+                rs = st.executeQuery("update userinfo set fname='"+Fname+"',lname='"+Lname+"', phonenumber='"+Ph_No+"', Emailid='"+Email+"', address='"+Address+"', DOB='"+DOB+"', Areacode='"+index+"' where id='"+user_id+"'");
                 jOptionPane1.showMessageDialog(null,"Record updated");
                 
                 
