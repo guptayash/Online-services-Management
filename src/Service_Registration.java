@@ -313,8 +313,7 @@ System.exit(0);        // TODO add your handling code here:
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 jTextField1.setText(jComboBox1.getSelectedItem().toString());
-generateBill GB=new generateBill();
-GB.jLabel4.setText(jComboBox3.getSelectedItem().toString());
+bill GB=new bill();
 GB.setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
