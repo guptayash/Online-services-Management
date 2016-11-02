@@ -260,6 +260,7 @@ public void CurrentDate(){
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         adminLanding frame = new adminLanding();
         frame.setVisible(true);
+        frame.jLabel4.setText("goelprateek5");
         shopkeeperreg.this.dispose();       
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
