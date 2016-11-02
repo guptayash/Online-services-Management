@@ -364,7 +364,44 @@ jPasswordField1.setEditable(false);
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-// TODO add your handling code here:
+        Connection conn = null;
+        try {
+            String driverName = "oracle.jdbc.driver.OracleDriver";
+            Class.forName(driverName);
+            String serverName = "Johnny";
+            String serverPort = "1521";
+            String sid = "XE";
+            String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
+            String username = "DBMS";
+            String password = "DBMS";
+            conn = DriverManager.getConnection(url, username, password);
+;
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Could not find the database driver" + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Could not connect to the database" + e.getMessage());
+            jLabel4.setText("Invalid Credentials; Logon Denied!");
+        }
+        try {
+                Statement st = conn.createStatement();
+                ResultSet rs=null;
+                String Fname= new String(jTextField1.getText());
+                String Lname=new String (jTextField2.getText());
+                String user_id=new String(jTextField3.getText());
+                long Ph_No=Long.parseLong(jTextField4.getText());
+                String Email=new String(jTextField5.getText());
+                String Address=new String(jTextField6.getText());
+                String DOB=new String(jTextField7.getText());
+                rs = st.executeQuery("update userinfo set fname='"+Fname+"',lname='"+Lname+"', phonenumber='"+Ph_No+"', Emailid='"+Email+"', address='"+Address+"', DOB='"+DOB+"' where id='"+user_id+"'");
+                jOptionPane1.showMessageDialog(null,"Record updated");
+                
+                
+                rs.close();
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -313,7 +313,7 @@ Sign_up.this.dispose();// TODO add your handling code here:
             Sign_up.this.dispose();
         }
         catch (SQLException e) {
-            System.out.println(e.getMessage());
+            jOptionPane1.showMessageDialog(null,e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
