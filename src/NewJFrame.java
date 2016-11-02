@@ -236,11 +236,13 @@ public class NewJFrame extends javax.swing.JFrame {
                         else if(rights.equals("ADMIN"))
                         {
                             AL.setVisible(true);
+                            AL.jLabel4.setText(this.jTextField1.getText());
                             NewJFrame.this.dispose();
                         }
                         else if(rights.equals("SHOPOWNER"))
                         {
                             SL.setVisible(true);
+                            SL.jlabel1.setText(this.jTextField1.getText());
                             NewJFrame.this.dispose();
                         }
                     }
