@@ -291,10 +291,18 @@ public class Service_Registration extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-NewJFrame frame = new NewJFrame();
+int reply=jOptionPane2.showConfirmDialog(null,"Do you really want to logout?","Logout Confirmation",jOptionPane2.YES_NO_OPTION);
+if (reply==jOptionPane2.YES_OPTION)
+{
+    NewJFrame frame = new NewJFrame();
 frame.setVisible(true);
 Service_Registration.this.dispose();
-jOptionPane2.showMessageDialog(null,"Successfully logged out!");// TODO add your handling code here:
+jOptionPane2.showMessageDialog(null,"Successfully logged out!");
+}
+else{
+    
+}
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

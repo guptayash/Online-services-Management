@@ -103,6 +103,11 @@ public class Edit_Info extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "North Delhi", "South Delhi", "East Delhi", "West Delhi" }));
 
         jButton1.setText("Submit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -256,7 +261,6 @@ Connection conn = null;
                 ResultSet rs=null;
                 ResultSet rs1=null;
                 String user_id=jOptionPane1.showInputDialog(null,"Enter username below");
-                System.out.println(user_id);
                 String pass=jOptionPane1.showInputDialog(null,"Enter your old password");
                 rs = st.executeQuery("select id,password  from Accounts where id='"+user_id+"'");
                 while (rs.next()){
@@ -355,6 +359,10 @@ Connection conn = null;
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
