@@ -72,7 +72,7 @@ public class Edit_Info extends javax.swing.JFrame {
 
         jLabel3.setText("Last Name");
 
-        jLabel4.setText("Username");
+        jLabel4.setText("Username (Can't be modified)");
 
         jLabel5.setText("Password");
 
@@ -297,6 +297,8 @@ Connection conn = null;
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 Connection conn = null;
+jTextField3.setEditable(false);
+jPasswordField1.setEditable(false);
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
@@ -328,6 +330,7 @@ Connection conn = null;
                     jTextField5.setText(rs.getString(4));
                     jTextField6.setText(rs.getString(5));
                     jTextField7.setText(rs.getString(6));
+                    System.out.println(rs.getString(6));
                     String AreaCode=rs.getString(7);
                     if(AreaCode.equals("1"))
                     {
@@ -361,7 +364,7 @@ Connection conn = null;
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
