@@ -110,6 +110,11 @@ public void CurrentDate(){
         jButton3.setText("View Past Bills");
 
         jButton5.setText("Edit Shop Profile");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Extend Services");
 
@@ -199,6 +204,15 @@ public void CurrentDate(){
         
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        editShopProfile eSP = new editShopProfile();
+        eSP.setVisible(true);
+        eSP.jTextField6.setText(this.jLabel1.getText());
+        shopkeeperLanding.this.dispose();
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
