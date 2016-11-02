@@ -314,6 +314,11 @@ System.exit(0);        // TODO add your handling code here:
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 jTextField1.setText(jComboBox1.getSelectedItem().toString());
 bill GB=new bill();
+
+GB.jLabel1.setText(sname);
+GB.jLabel2.setText(saddr);
+GB.jLabel3.setText(sphno);
+GB.jLabel4.setText(sid);
 GB.setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
