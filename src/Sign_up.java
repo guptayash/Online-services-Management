@@ -278,7 +278,7 @@ Sign_up.this.dispose();// TODO add your handling code here:
             String username = "DBMS";
             String password = "DBMS";
             conn = DriverManager.getConnection(url, username, password);
-            System.out.println("Successfully Connected to the database");
+
             
 
         } catch (ClassNotFoundException e) {
@@ -313,7 +313,7 @@ Sign_up.this.dispose();// TODO add your handling code here:
             Sign_up.this.dispose();
         }
         catch (SQLException e) {
-            System.out.println(e.getMessage());
+            jOptionPane1.showMessageDialog(null,e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

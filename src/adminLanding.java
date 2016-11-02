@@ -74,6 +74,7 @@ public class adminLanding extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jOptionPane1 = new javax.swing.JOptionPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -170,9 +171,17 @@ public class adminLanding extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        NewJFrame frame = new NewJFrame();
-        frame.setVisible(true);
-        adminLanding.this.dispose();        // TODO add your handling code here:
+int reply=jOptionPane1.showConfirmDialog(null,"Do you really want to logout?","Logout Confirmation",jOptionPane1.YES_NO_OPTION);
+if (reply==jOptionPane1.YES_OPTION)
+{
+    NewJFrame frame = new NewJFrame();
+frame.setVisible(true);
+adminLanding.this.dispose();
+jOptionPane1.showMessageDialog(null,"Successfully logged out!");
+}
+else{
+    
+}                // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -239,6 +248,7 @@ public class adminLanding extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
