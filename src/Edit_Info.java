@@ -109,7 +109,7 @@ public class Edit_Info extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Cancel");
+        jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -296,13 +296,13 @@ Edit_Info.this.dispose();
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-Connection conn = null;
+        Connection conn = null;
 jTextField3.setEditable(false);
 jPasswordField1.setEditable(false);
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "Johnny";
+            String serverName = "myGlobe";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
