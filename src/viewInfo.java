@@ -297,6 +297,7 @@ public class viewInfo extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         adminLanding frame = new adminLanding();
         frame.setVisible(true);
+        frame.jLabel4.setText("goelprateek5");
         viewInfo.this.dispose();
 
 // TODO add your handling code here:
