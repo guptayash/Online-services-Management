@@ -198,6 +198,7 @@ public class removeShop extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         adminLanding frame = new adminLanding();
         frame.setVisible(true);
+        frame.jLabel4.setText("goelprateek5");
         removeShop.this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
