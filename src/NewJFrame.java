@@ -189,6 +189,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 Service_Registration Sr=new Service_Registration();
                 adminLanding AL=new adminLanding();
                 
+                
                 while (rs.next()){
                     
                     if(user_id.equals(rs.getString(1)) && pass.equals(rs.getString(2)))
@@ -204,6 +205,10 @@ public class NewJFrame extends javax.swing.JFrame {
                         {
                             AL.setVisible(true);
                             NewJFrame.this.dispose();
+                        }
+                        else if(rights.equals("SHOPOWNER"))
+                        {
+                            
                         }
                     }
                     else
