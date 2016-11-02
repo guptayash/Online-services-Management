@@ -1,3 +1,15 @@
+
+import static java.lang.Thread.sleep;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,8 +27,27 @@ public class bill extends javax.swing.JFrame {
      */
     public bill() {
         initComponents();
+        CurrentDate();
     }
-
+  public void CurrentDate(){
+    Calendar cal= new GregorianCalendar();
+    int month=cal.get(Calendar.MONTH);
+    int year=cal.get(Calendar.YEAR);
+    int day= cal.get(Calendar.DAY_OF_MONTH);
+    jLabel5.setText("Date:  "+year+"-"+(month+1)+"-"+day);
+    Thread clock=new Thread(){
+        public void run(){
+            for(;;){
+                try {
+                    sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Service_Registration.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    };
+    clock.start();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,6 +57,7 @@ public class bill extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jOptionPane1 = new javax.swing.JOptionPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -47,10 +79,14 @@ public class bill extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("Shop Name");
 
@@ -95,9 +131,12 @@ public class bill extends javax.swing.JFrame {
 
         jLabel18.setText("Grand Total");
 
-        jLabel19.setText("Thank You! Visit Again...");
-
-        jButton1.setText("Return Home");
+        jButton1.setText("Confirm");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,34 +173,30 @@ public class bill extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(11, 11, 11)
-                                        .addComponent(jLabel14))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(58, 58, 58)
-                                        .addComponent(jLabel15))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(134, 134, 134)
-                                        .addComponent(jLabel12)))
-                                .addGap(181, 181, 181))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel17))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel13))
-                        .addGap(0, 86, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addContainerGap())
+                                .addGap(11, 11, 11)
+                                .addComponent(jLabel14))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(jLabel15))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(134, 134, 134)
+                                .addComponent(jLabel12)))
+                        .addGap(181, 181, 181))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel17))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel13))
+                .addContainerGap(88, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(jButton1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,19 +246,52 @@ public class bill extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel18)
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel19))
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
+                .addGap(21, 21, 21)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Connection conn = null;
+        try {
+            String driverName = "oracle.jdbc.driver.OracleDriver";
+            Class.forName(driverName);
+            String serverName = "myGlobe";
+            String serverPort = "1521";
+            String sid = "XE";
+            String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
+            String username = "DBMS";
+            String password = "DBMS";
+            conn = DriverManager.getConnection(url, username, password);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Could not find the database driver" + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Could not connect to the database" + e.getMessage());
+        }
+        try {
+                Statement st = conn.createStatement();
+                ResultSet rs=null;
+                rs = st.executeQuery("select shopcode from shopdetails where shopname='"+user_id+"'");
+            
+        } catch (Exception e) {
+                e.printStackTrace();
+            }
+        jOptionPane1.showMessageDialog(null,"Success!");
+        NewJFrame frame = new NewJFrame();
+        frame.setVisible(true);
+        this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,7 +340,6 @@ public class bill extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -281,6 +348,7 @@ public class bill extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
