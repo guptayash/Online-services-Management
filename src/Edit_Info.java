@@ -92,8 +92,6 @@ public class Edit_Info extends javax.swing.JFrame {
             }
         });
 
-        jPasswordField1.setText("54545651");
-
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
