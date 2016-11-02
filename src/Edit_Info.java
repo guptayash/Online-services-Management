@@ -59,6 +59,11 @@ public class Edit_Info extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Century Schoolbook", 1, 12)); // NOI18N
         jLabel1.setText("Edit your personal info");
@@ -81,7 +86,21 @@ public class Edit_Info extends javax.swing.JFrame {
 
         jLabel10.setText("Area Code");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
+        jPasswordField1.setText("54545651");
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "North Delhi", "South Delhi", "East Delhi", "West Delhi" }));
 
         jButton1.setText("Submit");
 
@@ -135,11 +154,11 @@ public class Edit_Info extends javax.swing.JFrame {
                                             .addComponent(jTextField1)
                                             .addComponent(jTextField2)
                                             .addComponent(jTextField3)
-                                            .addComponent(jPasswordField1)
+                                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                                             .addComponent(jTextField4)
                                             .addComponent(jTextField5)
                                             .addComponent(jTextField6)
-                                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
+                                            .addComponent(jTextField7))
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton4))))))
                     .addGroup(layout.createSequentialGroup()
@@ -268,6 +287,75 @@ Connection conn = null;
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+Connection conn = null;
+        try {
+            String driverName = "oracle.jdbc.driver.OracleDriver";
+            Class.forName(driverName);
+            String serverName = "Johnny";
+            String serverPort = "1521";
+            String sid = "XE";
+            String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
+            String username = "DBMS";
+            String password = "DBMS";
+            conn = DriverManager.getConnection(url, username, password);
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Could not find the database driver" + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Could not connect to the database" + e.getMessage());
+            jLabel4.setText("Invalid Credentials; Logon Denied!");
+        }
+        try {
+                
+                Statement st = conn.createStatement();
+                ResultSet rs=null;
+                String user_name=jTextField3.getText();
+               
+                rs = st.executeQuery("select Fname, Lname, phonenumber, emailid, address,DOB, Areacode from USERINFO where id='"+user_name+"'");
+                while (rs.next()){
+                    jTextField1.setText(rs.getString(1).toUpperCase());
+                    jTextField2.setText(rs.getString(2).toUpperCase());
+                    jTextField4.setText(rs.getString(3));
+                    jTextField5.setText(rs.getString(4));
+                    jTextField6.setText(rs.getString(5));
+                    jTextField7.setText(rs.getString(6));
+                    String AreaCode=rs.getString(7);
+                    if(AreaCode.equals("1"))
+                    {
+                        jComboBox1.setSelectedIndex(0);
+                    
+                    }
+                    else if(AreaCode.equals("2"))
+                    {
+                        jComboBox1.setSelectedIndex(1);
+                    }
+                    else if(AreaCode.equals("3"))
+                    {
+                        jComboBox1.setSelectedIndex(2);
+                    }
+                    else if(AreaCode.equals("4"))
+                    {
+                        jComboBox1.setSelectedIndex(3);
+                    }
+                    }
+                
+                
+                rs.close();
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -320,11 +408,11 @@ Connection conn = null;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JOptionPane jOptionPane1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    public javax.swing.JPasswordField jPasswordField1;
+    public javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jTextField2;
+    public javax.swing.JTextField jTextField3;
+    public javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
