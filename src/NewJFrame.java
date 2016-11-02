@@ -242,7 +242,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         else if(rights.equals("SHOPOWNER"))
                         {
                             SL.setVisible(true);
-                            SL.jlabel1.setText(this.jTextField1.getText());
+                            SL.jLabel1.setText(this.jTextField1.getText());
                             NewJFrame.this.dispose();
                         }
                     }
