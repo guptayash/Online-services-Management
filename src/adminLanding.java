@@ -1,7 +1,9 @@
 
 import static java.lang.Thread.sleep;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -214,7 +216,7 @@ else{
         frame.setVisible(true);
         frame.jLabel8.setText(jLabel4.getText());
         shopdetails sd=new shopdetails();
-        sd.jLabel12.setText(jLabel4.getText());
+        
              
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -233,13 +235,31 @@ else{
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Connection conn=null;
+        Connection conn = null;
+        try {
+            String driverName = "oracle.jdbc.driver.OracleDriver";
+            Class.forName(driverName);
+            String serverName = "Johnny";
+            String serverPort = "1521";
+            String sid = "XE";
+            String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
+            String username = "DBMS";
+            String password = "DBMS";
+            conn = DriverManager.getConnection(url, username, password);
+
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Could not find the database driver" + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Could not connect to the database" + e.getMessage());
+            jLabel4.setText("Invalid Credentials; Logon Denied!");
+        }
         try{
         Statement st=conn.createStatement();
         ResultSet rs=null;
         String user_id=jOptionPane1.showInputDialog(null,"Enter username below");
-                String pass=jOptionPane1.showInputDialog(null,"Enter your old password");
-                rs = st.executeQuery("select id,password  from Accounts where id='"+user_id+"'");
+        String pass=jOptionPane1.showInputDialog(null,"Enter your old password");
+        rs = st.executeQuery("select id,password  from Accounts where id='"+user_id+"'");
         
         while (rs.next()){
                     
@@ -258,7 +278,9 @@ else{
                     
                     }
                     }
-        }catch(Exception e){}// TODO add your handling code here:
+        }catch(Exception e){
+            e.printStackTrace();
+        }// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
