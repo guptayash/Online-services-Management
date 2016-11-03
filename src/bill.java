@@ -34,7 +34,7 @@ public class bill extends javax.swing.JFrame {
     int month=cal.get(Calendar.MONTH);
     int year=cal.get(Calendar.YEAR);
     int day= cal.get(Calendar.DAY_OF_MONTH);
-    jLabel20.setText("Date:  "+year+"-"+(month+1)+"-"+day);
+    jLabel21.setText("Date:  "+year+"-"+(month+1)+"-"+day);
     Thread clock=new Thread(){
         public void run(){
             for(;;){
