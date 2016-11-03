@@ -334,36 +334,41 @@ System.exit(0);        // TODO add your handling code here:
         try {
                 
                 Statement st = conn.createStatement();
-                ResultSet rs = null;
                 ResultSet rs1 = null;
                 String user_name=jLabel1.getText();
                 String sname = (String)jComboBox2.getSelectedItem();
-                rs = st.executeQuery("select fname, address, phonenumber, emailid  from USERINFO where id='"+user_name+"'");
+                System.out.println(user_name);
+                System.out.println(sname);
+                
                 rs1 = st.executeQuery("select address, phonenumber, emailid from shopdetails where shopname='"+sname+"'");
                 
                 bill GB=new bill();
-              rs.next();
-                rs1.next();
-                
-                   String saddr = rs1.getString(1);
-                   String sph = rs1.getString(2);
-                   String semail = rs1.getString(3);
-                   GB.jLabel1.setText(sname);
-                   GB.jLabel2.setText(saddr);
-                   GB.jLabel3.setText(sph);
-                    GB.jLabel4.setText(semail);
                     
-                    String ufname = rs.getString(1);
-                    String uaddr = rs.getString(2);
-                    String uph = rs.getString(3);
-                  String uemail = rs.getString(4);
-                 GB.jLabel8.setText(ufname);
+                    rs1.next();
+                    String saddr = rs1.getString(1);
+                    String sph = rs1.getString(2);
+                    String semail = rs1.getString(3);
+                    GB.jLabel1.setText(sname);
+                    GB.jLabel2.setText(saddr);
+                    GB.jLabel3.setText(sph);
+                    GB.jLabel4.setText(semail);
+                    rs1.close();
+                 rs1 = st.executeQuery("select fname, address, phonenumber, emailid from userinfo where id = 'shivam.gupta'");
+                    rs1.next();
+                    String ufname = rs1.getString(1);
+                    String uaddr = rs1.getString(2);
+                    String uph = rs1.getString(3);
+                    String uemail = rs1.getString(4);
+                    GB.jLabel8.setText(ufname);
                     GB.jLabel9.setText(uaddr);
                     GB.jLabel10.setText(uph);
-                   GB.jLabel11.setText(uemail);
+                    GB.jLabel11.setText(uemail);
+                    rs1.close();
+                    
                     GB.setVisible(true);
                     this.dispose();
-              
+       
+                    rs1.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
