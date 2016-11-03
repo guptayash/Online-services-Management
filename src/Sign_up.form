@@ -181,7 +181,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="DOB  [Format: DD/MMM/YYYY]"/>
+        <Property name="text" type="java.lang.String" value="DOB"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
