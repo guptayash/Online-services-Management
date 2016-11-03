@@ -332,7 +332,7 @@ System.exit(0);        // TODO add your handling code here:
             System.out.println("Could not connect to the database" + e.getMessage());
         }
         try {
-                
+                bill GB=new bill();
                 Statement st = conn.createStatement();
                 ResultSet rs1 = null;
                 String user_name=jLabel1.getText();
@@ -344,12 +344,20 @@ System.exit(0);        // TODO add your handling code here:
                 Integer billno = Integer.parseInt(rs1.getString(1));
                 billno++;
                 rs1.close();
+                String prod=(String)jComboBox3.getSelectedItem();
+                rs1 = st.executeQuery("select cost from products where productname='"+prod+"'");
+                rs1.next();
+                Integer cost = Integer.parseInt(rs1.getString(1));
+                GB.jLabel16.setText(Integer.toString(cost));
+                
                 
                 rs1 = st.executeQuery("select address, phonenumber, emailid from shopdetails where shopname='"+sname+"'");
                 
-                bill GB=new bill();
+                
                     GB.jLabel19.setText(user_name);
                     GB.jLabel20.setText(Integer.toString(billno));
+                    GB.jLabel22.setText(prod);
+                    GB.jLabel23.setText(jTextField1.getText());
                     rs1.next();
                     String saddr = rs1.getString(1);
                     String sph = rs1.getString(2);
