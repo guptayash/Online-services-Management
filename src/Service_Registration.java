@@ -191,7 +191,7 @@ public class Service_Registration extends javax.swing.JFrame {
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2))
@@ -296,7 +296,7 @@ public class Service_Registration extends javax.swing.JFrame {
 int reply=jOptionPane2.showConfirmDialog(null,"Do you really want to logout?","Logout Confirmation",jOptionPane2.YES_NO_OPTION);
 if (reply==jOptionPane2.YES_OPTION)
 {
-    NewJFrame frame = new NewJFrame();
+    First_Page frame = new First_Page();
 frame.setVisible(true);
 Service_Registration.this.dispose();
 jOptionPane2.showMessageDialog(null,"Successfully logged out!");
@@ -315,10 +315,10 @@ System.exit(0);        // TODO add your handling code here:
 jTextField1.setText(jComboBox1.getSelectedItem().toString());
 bill GB=new bill();
 
-GB.jLabel1.setText(sname);
-GB.jLabel2.setText(saddr);
-GB.jLabel3.setText(sphno);
-GB.jLabel4.setText(sid);
+//GB.jLabel1.setText(sname);
+//GB.jLabel2.setText(saddr);
+//GB.jLabel3.setText(sphno);
+//GB.jLabel4.setText(sid);
 GB.setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -335,7 +335,7 @@ Edit.setVisible(true);
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;

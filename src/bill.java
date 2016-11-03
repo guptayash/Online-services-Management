@@ -192,7 +192,7 @@ public class bill extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
                     .addComponent(jLabel13))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(210, 210, 210)
                 .addComponent(jButton1)
@@ -287,7 +287,7 @@ public class bill extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         jOptionPane1.showMessageDialog(null,"Success!");
-        NewJFrame frame = new NewJFrame();
+        First_Page frame = new First_Page();
         frame.setVisible(true);
         this.dispose();
         // TODO add your handling code here:

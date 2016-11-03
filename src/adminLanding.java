@@ -180,7 +180,7 @@ public class adminLanding extends javax.swing.JFrame {
 int reply=jOptionPane1.showConfirmDialog(null,"Do you really want to logout?","Logout Confirmation",jOptionPane1.YES_NO_OPTION);
 if (reply==jOptionPane1.YES_OPTION)
 {
-    NewJFrame frame = new NewJFrame();
+    First_Page frame = new First_Page();
 frame.setVisible(true);
 adminLanding.this.dispose();
 jOptionPane1.showMessageDialog(null,"Successfully logged out!");

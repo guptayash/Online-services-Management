@@ -304,7 +304,7 @@ public class viewInfo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        NewJFrame frame = new NewJFrame();
+        First_Page frame = new First_Page();
         frame.setVisible(true);
         viewInfo.this.dispose();
 
