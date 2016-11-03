@@ -193,6 +193,7 @@ else{
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         shopkeeperreg frame = new shopkeeperreg();
         frame.setVisible(true);
+        frame.jLabel8.setText(jLabel4.getText());
         adminLanding.this.dispose();        
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
