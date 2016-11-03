@@ -325,7 +325,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel17">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tax: "/>
+        <Property name="text" type="java.lang.String" value="Tax (10%)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel18">

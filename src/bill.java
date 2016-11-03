@@ -131,7 +131,7 @@ public class bill extends javax.swing.JFrame {
 
         jLabel16.setText("Cost");
 
-        jLabel17.setText("Tax: ");
+        jLabel17.setText("Tax (10%)");
 
         jLabel18.setText("Grand Total");
 
