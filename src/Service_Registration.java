@@ -343,6 +343,7 @@ System.exit(0);        // TODO add your handling code here:
                 rs1 = st.executeQuery("select address, phonenumber, emailid from shopdetails where shopname='"+sname+"'");
                 
                 bill GB=new bill();
+                    GB.jLabel19.setText(user_name);
                     
                     rs1.next();
                     String saddr = rs1.getString(1);
@@ -353,22 +354,23 @@ System.exit(0);        // TODO add your handling code here:
                     GB.jLabel3.setText(sph);
                     GB.jLabel4.setText(semail);
                     rs1.close();
-                 rs1 = st.executeQuery("select fname, address, phonenumber, emailid from userinfo where id = 'shivam.gupta'");
+                    
+                    rs1 = st.executeQuery("select fname, address, phonenumber, emailid from userinfo where id = '"+user_name+"'");
                     rs1.next();
                     String ufname = rs1.getString(1);
                     String uaddr = rs1.getString(2);
                     String uph = rs1.getString(3);
                     String uemail = rs1.getString(4);
+                    
                     GB.jLabel8.setText(ufname);
                     GB.jLabel9.setText(uaddr);
                     GB.jLabel10.setText(uph);
                     GB.jLabel11.setText(uemail);
                     rs1.close();
                     
+                    
                     GB.setVisible(true);
                     this.dispose();
-       
-                    rs1.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
