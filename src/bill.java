@@ -299,15 +299,15 @@ public class bill extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         jOptionPane1.showMessageDialog(null,"Success!");
-        First_Page frame = new First_Page();
+        Service_Registration frame = new Service_Registration();
         frame.setVisible(true);
         this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-Service_Registration SR = new Service_Registration();
-        Connection conn = null;
+            Service_Registration SR = new Service_Registration();
+                Connection conn = null;
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
@@ -328,6 +328,7 @@ Service_Registration SR = new Service_Registration();
                 ResultSet rs=null;
                 String name = jLabel8.getText();
                 rs = st.executeQuery("select id from userinfo where Fname='"+name+"'");
+                System.out.println(rs);
                 rs.next();
                 String userID = rs.getString(1);
                 SR.jLabel1.setText(userID);
