@@ -349,8 +349,11 @@ System.exit(0);        // TODO add your handling code here:
                 rs1.next();
                 Integer cost = Integer.parseInt(rs1.getString(1));
                 GB.jLabel16.setText(Integer.toString(cost));
+                Double tax = cost*0.10;
+                GB.jLabel24.setText(Double.toString(tax));
+                GB.jLabel25.setText(Double.toString(tax+cost));
                 
-                
+                rs1.close();
                 rs1 = st.executeQuery("select address, phonenumber, emailid from shopdetails where shopname='"+sname+"'");
                 
                 
