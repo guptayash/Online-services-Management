@@ -281,7 +281,7 @@ public class bill extends javax.swing.JFrame {
         try {
                 Statement st = conn.createStatement();
                 ResultSet rs=null;
-                rs = st.executeQuery("select shopcode from shopdetails where shopname='"+user_id+"'");
+                rs = st.executeQuery("select shopcode from shopdetails where shopname=''");
             
         } catch (Exception e) {
                 e.printStackTrace();
