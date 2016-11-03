@@ -233,10 +233,7 @@ Edit_Info.this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Service_Registration landing = new Service_Registration();
-        landing.jLabel1.setText(jTextField3.getText());
         
-        landing.setVisible(true);
         Edit_Info.this.dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -383,7 +380,6 @@ jPasswordField1.setEditable(false);
             System.out.println("Could not find the database driver" + e.getMessage());
         } catch (SQLException e) {
             System.out.println("Could not connect to the database" + e.getMessage());
-            jLabel4.setText("Invalid Credentials; Logon Denied!");
         }
         try {
                 Statement st = conn.createStatement();

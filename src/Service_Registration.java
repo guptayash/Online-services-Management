@@ -220,7 +220,7 @@ public class Service_Registration extends javax.swing.JFrame {
                                     .addComponent(jLabel10))
                                 .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox2, 0, 121, Short.MAX_VALUE)
+                                    .addComponent(jComboBox2, 0, 169, Short.MAX_VALUE)
                                     .addComponent(jTextField1))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
@@ -386,7 +386,7 @@ System.exit(0);        // TODO add your handling code here:
                     
                     
                     GB.setVisible(true);
-                    this.dispose();
+                    
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -395,9 +395,9 @@ System.exit(0);        // TODO add your handling code here:
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 Edit_Info Edit=new Edit_Info();
-Edit.jTextField3.setText(this.jLabel1.getText());
+Edit.jTextField3.setText(jLabel1.getText());
 Edit.setVisible(true);
-this.dispose();
+
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -472,7 +472,7 @@ this.dispose();
                 rs = st.executeQuery("select shopname from shopdetails where areacode = "+ac+"");
                 jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] {}));
                 jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Select Shop Now!"}));
-
+                jTextField1.setText("");
 
                 while (rs.next()){
                     String result = rs.getString(1);

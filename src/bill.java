@@ -184,11 +184,12 @@ public class bill extends javax.swing.JFrame {
                             .addComponent(jLabel11))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -343,15 +344,22 @@ public class bill extends javax.swing.JFrame {
         }
         try {
                 Statement st = conn.createStatement();
+                Integer billno=Integer.parseInt(jLabel20.getText());
+                String id = jLabel19.getText();
                 ResultSet rs=null;
-                rs = st.executeQuery("select shopcode from shopdetails where shopname=''");
-            rs.close();
+                rs = st.executeQuery("select shopcode from shopdetails where shopname='"+jLabel1.getText()+"'");
+                rs.next();
+                Integer sc = Integer.parseInt(rs.getString(1));
+                rs.close();
+                String prod = jLabel22.getText();
+                String model = jLabel23.getText();
+                Double cost = Double.parseDouble(jLabel25.getText());
+                st.executeQuery("insert into service values("+billno+",'"+id+"',"+sc+",'"+prod+"',"+cost+",0,'"+model+"')");
         } catch (Exception e) {
                 e.printStackTrace();
             }
+        
         jOptionPane1.showMessageDialog(null,"Success!");
-        Service_Registration frame = new Service_Registration();
-        frame.setVisible(true);
         this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -385,7 +393,6 @@ public class bill extends javax.swing.JFrame {
                 jLabel12.setText(rs1.getString(1).toUpperCase());
                 jLabel13.setText(rs1.getString(2).toUpperCase());
                 rs1.close();
-                SR.setVisible(true);
                 this.dispose();
                 
                 
