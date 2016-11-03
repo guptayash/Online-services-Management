@@ -377,7 +377,7 @@ public class bill extends javax.swing.JFrame {
         }
         try {
                 Service_Registration SR = new Service_Registration();
-                SR.jLabel1.setText(jLabel9.getText());
+                SR.jLabel1.setText(jLabel19.getText());
                 Statement st = conn.createStatement();
                 ResultSet rs1=null;
                 rs1 = st.executeQuery("select address, phonenumber from userinfo where id='"+jLabel19.getText()+"'");

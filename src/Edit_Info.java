@@ -234,7 +234,7 @@ Edit_Info.this.dispose();// TODO add your handling code here:
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Service_Registration landing = new Service_Registration();
-        String userid= jTextField3.getText();
+        landing.jLabel1.setText(jTextField3.getText());
         
         landing.setVisible(true);
         Edit_Info.this.dispose();
