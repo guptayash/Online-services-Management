@@ -364,7 +364,7 @@ public class editShopProfile extends javax.swing.JFrame {
                 rs = st.executeQuery("select * from shopdetails where shopkeeper='"+user_name+"'");
                 
                 while (rs.next()){
-                    System.out.println(rs.getString(2));
+                    
                     jTextField1.setText(rs.getString(2).toUpperCase());
                     jTextField3.setText(rs.getString(4));
                     jTextField4.setText(rs.getString(5));
