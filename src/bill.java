@@ -357,8 +357,7 @@ public class bill extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-            Service_Registration SR = new Service_Registration();
-            SR.jLabel1.setText(jLabel9.getText());
+            
             
         Connection conn = null;
         try {
@@ -377,9 +376,10 @@ public class bill extends javax.swing.JFrame {
             System.out.println("Could not connect to the database" + e.getMessage());
         }
         try {
+                Service_Registration SR = new Service_Registration();
+                SR.jLabel1.setText(jLabel9.getText());
                 Statement st = conn.createStatement();
                 ResultSet rs=null;
-                String name = jLabel8.getText();
                 rs = st.executeQuery("select address, phonenumber from userinfo where id='"+jLabel9.getText()+"'");
                 rs.next();
                 jLabel12.setText(rs.getString(1).toUpperCase());
