@@ -339,12 +339,17 @@ System.exit(0);        // TODO add your handling code here:
                 String sname = (String)jComboBox2.getSelectedItem();
                 System.out.println(user_name);
                 System.out.println(sname);
+                rs1 = st.executeQuery("select count(billno) from service");
+                rs1.next();
+                Integer billno = Integer.parseInt(rs1.getString(1));
+                billno++;
+                rs1.close();
                 
                 rs1 = st.executeQuery("select address, phonenumber, emailid from shopdetails where shopname='"+sname+"'");
                 
                 bill GB=new bill();
                     GB.jLabel19.setText(user_name);
-                    
+                    GB.jLabel20.setText(Integer.toString(billno));
                     rs1.next();
                     String saddr = rs1.getString(1);
                     String sph = rs1.getString(2);
