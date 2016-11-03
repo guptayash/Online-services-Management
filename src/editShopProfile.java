@@ -233,7 +233,7 @@ public class editShopProfile extends javax.swing.JFrame {
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -291,7 +291,7 @@ public class editShopProfile extends javax.swing.JFrame {
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -341,7 +341,7 @@ public class editShopProfile extends javax.swing.JFrame {
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -357,8 +357,10 @@ public class editShopProfile extends javax.swing.JFrame {
         try {
                 Statement st = conn.createStatement();
                 ResultSet rs=null;
-                String user_name=jTextField6.getText();
-                rs = st.executeQuery("select * from shopdetails where shopkeeper='"+user_name+"'");
+                shopkeeperLanding skl=new shopkeeperLanding();
+                String user_name=skl.jLabel1.getText();
+                System.out.println(user_name);
+                rs = st.executeQuery("select * from shopdetails where shopkeeperID='"+user_name+"'");
                 while (rs.next()){
                     jTextField1.setText(rs.getString(2).toUpperCase());
                     jTextField3.setText(rs.getString(4));

@@ -73,6 +73,7 @@ public void CurrentDate(){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jOptionPane1 = new javax.swing.JOptionPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -189,9 +190,17 @@ public void CurrentDate(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        First_Page frame = new First_Page();
+int reply=jOptionPane1.showConfirmDialog(null,"Do you really want to logout?","Logout Confirmation",jOptionPane1.YES_NO_OPTION);
+if (reply==jOptionPane1.YES_OPTION)
+{
+    First_Page frame = new First_Page();
         frame.setVisible(true);
         shopkeeperLanding.this.dispose();
+jOptionPane1.showMessageDialog(null,"Successfully logged out!");
+}
+else{
+    
+}
         
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -212,7 +221,8 @@ public void CurrentDate(){
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+viewNewRequest nr=new viewNewRequest();
+nr.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -260,6 +270,7 @@ public void CurrentDate(){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

@@ -85,7 +85,7 @@ public class adminLanding extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Welcome! ");
 
@@ -193,7 +193,10 @@ else{
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         shopkeeperreg frame = new shopkeeperreg();
         frame.setVisible(true);
-        adminLanding.this.dispose();        
+        frame.jLabel8.setText(jLabel4.getText());
+        shopdetails sd=new shopdetails();
+        sd.jLabel12.setText(jLabel4.getText());
+             
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -207,7 +210,6 @@ else{
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         viewInfo frame = new viewInfo();
         frame.setVisible(true);
-        adminLanding.this.dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
