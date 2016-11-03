@@ -235,8 +235,7 @@ else{
                 
                 Statement st = conn.createStatement();
                 ResultSet rs=null;
-                int shopCode= Integer.parseInt(jTextField1.getText());
-                System.out.println(shopCode);               
+                int shopCode= Integer.parseInt(jTextField1.getText());            
                 rs = st.executeQuery("delete from shopdetails where shopcode='"+shopCode+"'");
                 rs.close();
             } catch (Exception e) {

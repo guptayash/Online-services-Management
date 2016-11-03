@@ -221,7 +221,7 @@ public class editShopProfile extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         shopkeeperLanding SL = new shopkeeperLanding();
-        SL.setVisible(true);
+        
         SL.jLabel1.setText(this.jTextField6.getText());
         editShopProfile.this.dispose();
         
