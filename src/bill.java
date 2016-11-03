@@ -359,9 +359,8 @@ public class bill extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
             Service_Registration SR = new Service_Registration();
             SR.jLabel1.setText(jLabel9.getText());
-            SR.setVisible(true);
-            this.dispose();
-                /*Connection conn = null;
+            
+        Connection conn = null;
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
@@ -376,21 +375,22 @@ public class bill extends javax.swing.JFrame {
             System.out.println("Could not find the database driver" + e.getMessage());
         } catch (SQLException e) {
             System.out.println("Could not connect to the database" + e.getMessage());
-        }*/
-        /*try {
+        }
+        try {
                 Statement st = conn.createStatement();
                 ResultSet rs=null;
                 String name = jLabel8.getText();
-                rs = st.executeQuery("select id from userinfo where Fname='"+name+"'");
+                rs = st.executeQuery("select address, phonenumber from userinfo where id='"+jLabel9.getText()+"'");
                 rs.next();
-                String userID = rs.getString(1);
-                SR.jLabel1.setText(userID);
+                jLabel12.setText(rs.getString(1).toUpperCase());
+                jLabel13.setText(rs.getString(2).toUpperCase());
                 SR.setVisible(true);
                 this.dispose();
+                
                 rs.close();
         } catch (Exception e) {
                 e.printStackTrace();
-            }*/
+            }
         
 
         // TODO add your handling code here:
