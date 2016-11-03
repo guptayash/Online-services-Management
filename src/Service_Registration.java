@@ -337,32 +337,32 @@ System.exit(0);        // TODO add your handling code here:
                 
                 Statement st = conn.createStatement();
                 ResultSet rs = null;
-               // ResultSet rs1 = null;
+                ResultSet rs1 = null;
                 String user_name=jLabel1.getText();
                 String sname = (String)jComboBox2.getSelectedItem();
                 rs = st.executeQuery("select fname, address, phonenumber, emailid  from USERINFO where id='"+user_name+"'");
-                //rs1 = st.executeQuery("select address, phonenumber, emailid from shopdetails where shopname='"+sname+"'");
+                rs1 = st.executeQuery("select address, phonenumber, emailid from shopdetails where shopname='"+sname+"'");
                 
                 bill GB=new bill();
-                rs.next();
-                //rs1.next();
+              rs.next();
+                rs1.next();
                 
-                   // String saddr = rs1.getString(1);
-                   // String sph = rs1.getString(2);
-                   // String semail = rs1.getString(3);
-                    //GB.jLabel1.setText(sname);
-                    //GB.jLabel2.setText(saddr);
-                    //GB.jLabel3.setText(sph);
-                    //GB.jLabel4.setText(semail);
+                   String saddr = rs1.getString(1);
+                   String sph = rs1.getString(2);
+                   String semail = rs1.getString(3);
+                   GB.jLabel1.setText(sname);
+                   GB.jLabel2.setText(saddr);
+                   GB.jLabel3.setText(sph);
+                    GB.jLabel4.setText(semail);
                     
                     String ufname = rs.getString(1);
                     String uaddr = rs.getString(2);
                     String uph = rs.getString(3);
-                    String uemail = rs.getString(4);
-                    GB.jLabel8.setText(ufname);
+                  String uemail = rs.getString(4);
+                 GB.jLabel8.setText(ufname);
                     GB.jLabel9.setText(uaddr);
                     GB.jLabel10.setText(uph);
-                    GB.jLabel11.setText(uemail);
+                   GB.jLabel11.setText(uemail);
                     GB.setVisible(true);
                     this.dispose();
               
