@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -114,6 +115,11 @@ public class First_Page extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addComponent(jButton1))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jToggleButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -121,13 +127,8 @@ public class First_Page extends javax.swing.JFrame {
                             .addComponent(jTextField1)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(28, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +201,7 @@ Connection conn = null;
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -283,7 +284,67 @@ First_Page.this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         // TODO add your handling code here:
+
+
+
+Connection conn = null;
+        try {
+            String driverName = "oracle.jdbc.driver.OracleDriver";
+            Class.forName(driverName);
+            String serverName = "Johnny";
+            String serverPort = "1521";
+            String sid = "XE";
+            String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
+            String username = "DBMS";
+            String password = "DBMS";
+            conn = DriverManager.getConnection(url, username, password);
+
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Could not find the database driver" + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Could not connect to the database" + e.getMessage());
+            
+        }
+        try {
+                Statement st = conn.createStatement();
+                Statement st1 = conn.createStatement();
+                ResultSet rs=null;
+                ResultSet rs1=null;
+                String user_id= JOptionPane.showInputDialog(null,"Enter a valid username");
+                        String phone=JOptionPane.showInputDialog(null,"Enter your phone number");
+                        String d=JOptionPane.showInputDialog(null,"Enter your DOB [DD-Mmm-YYYY]");
+                        System.out.println(d);
+                rs = st.executeQuery("select accounts.id, accounts.password, userinfo.phonenumber,TO_CHAR(userinfo.DOB,'DD-Mon-YYYY') from accounts join userinfo on accounts.id=userinfo.id where accounts.id='"+user_id+"'");
+                
+                
+                
+                while (rs.next()){
+                        
+                        System.out.println(rs.getString(3)+rs.getString(4));
+                        if (phone.equals(rs.getString(3)) && d.equals(rs.getString(4)))
+                        {
+                            
+                            String newPass=JOptionPane.showInputDialog(null,"Enter new password");
+                            rs1=st1.executeQuery("update accounts set password='"+newPass+"' where id='"+user_id+"'");
+                            JOptionPane.showMessageDialog(null,"Password Changed Successfully");
+                            
+                        
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null,"Invalid Match! Please Try Again");
+                        }
+                
+                }
+                rs.close();
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+
+    
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

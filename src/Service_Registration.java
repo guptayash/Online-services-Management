@@ -317,7 +317,7 @@ System.exit(0);        // TODO add your handling code here:
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -342,7 +342,7 @@ System.exit(0);        // TODO add your handling code here:
                 rs1 = st.executeQuery("select address, phonenumber, emailid from shopdetails where shopname='"+sname+"'");
                 
                 bill GB=new bill();
-              rs.next();
+                //rs.next();
                 rs1.next();
                 
                    String saddr = rs1.getString(1);
@@ -363,6 +363,8 @@ System.exit(0);        // TODO add your handling code here:
                    GB.jLabel11.setText(uemail);
                     GB.setVisible(true);
                     this.dispose();
+                    rs. close();
+                    rs1.close();
               
             } catch (Exception e) {
                 e.printStackTrace();
@@ -382,7 +384,7 @@ Edit.setVisible(true);
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -424,7 +426,7 @@ Edit.setVisible(true);
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -468,7 +470,7 @@ Edit.setVisible(true);
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
