@@ -335,9 +335,10 @@ public class editShopProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField6KeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        Connection conn = null;
         jTextField6.setEditable(false);
         jPasswordField1.setEditable(false);
+        Connection conn = null;
+        
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
