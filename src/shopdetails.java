@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -102,7 +103,7 @@ public void CurrentDate(){
         jTextField5 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -318,8 +319,9 @@ public void CurrentDate(){
             rs.next();
             int shopCode = rs.getInt(1);
             shopCode = shopCode+1;
-            rs = st.executeQuery("insert into shopdetails values("+shopCode+",'"+shopName+"',"+areaCode+","+ph+",'"+addr+"','"+email+"',"+productCategory+",'"+shopkeeperID+"')");
-            
+            rs = st.executeQuery("insert into shopdetails values("+shopCode+",'"+shopName+"',"+areaCode+","+ph+",'"+addr+"','"+email+"',"+productCategory+")");
+            JOptionPane.showMessageDialog(null,"Created account for the Shopkeeper.\n Please send him login info");
+            shopdetails.this.dispose();
             rs.close();
         }
         catch (SQLException e) {
