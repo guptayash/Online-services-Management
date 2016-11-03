@@ -358,6 +358,9 @@ public class bill extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
             Service_Registration SR = new Service_Registration();
+            SR.jLabel1.setText(jLabel9.getText());
+            SR.setVisible(true);
+            this.dispose();
                 /*Connection conn = null;
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
