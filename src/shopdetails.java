@@ -280,7 +280,7 @@ public void CurrentDate(){
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -304,7 +304,7 @@ public void CurrentDate(){
         String email = jTextField4.getText();
         int productCategory = jComboBox2.getSelectedIndex();
         productCategory = productCategory+1; // Index starts with zero. 
-        String shopkeeperID=jTextField5.getText();
+        String shopkeeperId=jTextField5.getText();
         
         try{
             Statement st = conn.createStatement();

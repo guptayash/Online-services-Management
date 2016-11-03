@@ -53,11 +53,11 @@ public class editShopProfile extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox2 = new javax.swing.JComboBox<String>();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -113,9 +113,9 @@ public class editShopProfile extends javax.swing.JFrame {
 
         jPasswordField1.setText("password");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "North Delhi", "South Delhi", "East Delhi", "West Delhi" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "North Delhi", "South Delhi", "East Delhi", "West Delhi" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COMPUTER AND OFFICE PRODUCTS", "HOME AND KITCHEN", "MOBILE AND ACCESSRIES", "OTHERS" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "COMPUTER AND OFFICE PRODUCTS", "HOME AND KITCHEN", "MOBILE AND ACCESSRIES", "OTHERS" }));
 
         jButton1.setText("Exit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -342,7 +342,7 @@ public class editShopProfile extends javax.swing.JFrame {
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -359,10 +359,12 @@ public class editShopProfile extends javax.swing.JFrame {
                 Statement st = conn.createStatement();
                 ResultSet rs=null;
                 shopkeeperLanding skl=new shopkeeperLanding();
-                String user_name=skl.jLabel1.getText();
+                String user_name=new String(jTextField6.getText());
                 System.out.println(user_name);
                 rs = st.executeQuery("select * from shopdetails where shopkeeper='"+user_name+"'");
+                
                 while (rs.next()){
+                    System.out.println(rs.getString(2));
                     jTextField1.setText(rs.getString(2).toUpperCase());
                     jTextField3.setText(rs.getString(4));
                     jTextField4.setText(rs.getString(5));
