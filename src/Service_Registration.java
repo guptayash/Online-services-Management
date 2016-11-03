@@ -137,7 +137,12 @@ public class Service_Registration extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Century Schoolbook", 1, 12)); // NOI18N
         jLabel6.setText("Register a service");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "North Delh", "South Delhii", "East Delhi", "West Delhi" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "North Delhi", "South Delhi", "East Delhi", "West Delhi" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -335,7 +340,7 @@ Edit.setVisible(true);
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "Johnny";
+            String serverName = "myGlobe";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -370,6 +375,79 @@ Edit.setVisible(true);
             }
     // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        Connection conn = null;
+        try {
+            String driverName = "oracle.jdbc.driver.OracleDriver";
+            Class.forName(driverName);
+            String serverName = "myGlobe";
+            String serverPort = "1521";
+            String sid = "XE";
+            String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
+            String username = "DBMS";
+            String password = "DBMS";
+            conn = DriverManager.getConnection(url, username, password);
+
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Could not find the database driver" + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Could not connect to the database" + e.getMessage());
+        }
+        try {
+                
+                Statement st = conn.createStatement();
+                ResultSet rs = null;
+                ResultSet rs1 = null;
+                String user_name=jLabel1.getText();
+                String sname = (String)jComboBox2.getSelectedItem();
+                rs = st.executeQuery("select fname, address, phonenumber, emailid  from USERINFO where id='"+user_name+"'");
+                rs1 = st.executeQuery("select address, phonenumber, emailid from shopdetails where shopname='"+sname+"'");
+                
+                bill GB=new bill();
+                while(rs.next()){
+                    String saddr = rs1.getString(1);
+                    String sph = rs1.getString(2);
+                    String semail = rs1.getString(3);
+                    GB.jLabel1.setText(sname.toUpperCase());
+                    GB.jLabel2.setText(saddr.toUpperCase());
+                    GB.jLabel3.setText(sph);
+                    GB.jLabel4.setText(semail);
+                    
+                    String ufname = rs.getString(1);
+                    String uaddr = rs.getString(2);
+                    String uph = rs.getString(3);
+                    String uemail = rs.getString(4);
+                    GB.jLabel8.setText(ufname.toUpperCase());
+                    GB.jLabel9.setText(uaddr.toUpperCase());
+                    GB.jLabel10.setText(uph);
+                    GB.jLabel11.setText(uemail);
+                    GB.setVisible(true);
+                    this.dispose();
+                }
+                rs.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        
+
+//      GB.jLabel1.setText(sname);
+//      GB.jLabel2.setText(saddr);
+//      GB.jLabel3.setText(sphno);
+//      GB.jLabel4.setText(sid);
+
+jTextField1.setText(jComboBox1.getSelectedItem().toString());
+bill GB=new bill();
+
+//GB.jLabel1.setText(sname);
+//GB.jLabel2.setText(saddr);
+//GB.jLabel3.setText(sphno);
+//GB.jLabel4.setText(sid);
+GB.setVisible(true);
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -232,13 +232,16 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
-            <StringItem index="0" value="North Delh"/>
-            <StringItem index="1" value="South Delhii"/>
+            <StringItem index="0" value="North Delhi"/>
+            <StringItem index="1" value="South Delhi"/>
             <StringItem index="2" value="East Delhi"/>
             <StringItem index="3" value="West Delhi"/>
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox2">
       <Properties>
