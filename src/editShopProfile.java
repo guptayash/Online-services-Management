@@ -335,9 +335,10 @@ public class editShopProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField6KeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        Connection conn = null;
         jTextField6.setEditable(false);
         jPasswordField1.setEditable(false);
+        Connection conn = null;
+        
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
@@ -360,7 +361,7 @@ public class editShopProfile extends javax.swing.JFrame {
                 shopkeeperLanding skl=new shopkeeperLanding();
                 String user_name=skl.jLabel1.getText();
                 System.out.println(user_name);
-                rs = st.executeQuery("select * from shopdetails where shopkeeperID='"+user_name+"'");
+                rs = st.executeQuery("select * from shopdetails where shopkeeper='"+user_name+"'");
                 while (rs.next()){
                     jTextField1.setText(rs.getString(2).toUpperCase());
                     jTextField3.setText(rs.getString(4));

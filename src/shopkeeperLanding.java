@@ -87,8 +87,6 @@ public void CurrentDate(){
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
-
         jLabel2.setText("Welcome!");
 
         jLabel3.setText("Date");
@@ -136,7 +134,7 @@ public void CurrentDate(){
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3))
@@ -215,7 +213,7 @@ else{
         editShopProfile eSP = new editShopProfile();
         eSP.setVisible(true);
         eSP.jTextField6.setText(this.jLabel1.getText());
-        shopkeeperLanding.this.dispose();
+        //shopkeeperLanding.this.dispose();
         
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
