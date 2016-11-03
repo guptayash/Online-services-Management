@@ -337,8 +337,8 @@ System.exit(0);        // TODO add your handling code here:
                 ResultSet rs1 = null;
                 String user_name=jLabel1.getText();
                 String sname = (String)jComboBox2.getSelectedItem();
-                System.out.println(user_name);
-                System.out.println(sname);
+                //System.out.println(user_name);
+                //System.out.println(sname);
                 rs1 = st.executeQuery("select count(billno) from service");
                 rs1.next();
                 Integer billno = Integer.parseInt(rs1.getString(1));
@@ -397,6 +397,7 @@ System.exit(0);        // TODO add your handling code here:
 Edit_Info Edit=new Edit_Info();
 Edit.jTextField3.setText(this.jLabel1.getText());
 Edit.setVisible(true);
+this.dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -233,8 +233,11 @@ Edit_Info.this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-Edit_Info.this.dispose();
+        Service_Registration landing = new Service_Registration();
+        String userid= jTextField3.getText();
+        
+        landing.setVisible(true);
+        Edit_Info.this.dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -269,6 +272,7 @@ Edit_Info.this.dispose();
                     {
                         String newPass=jOptionPane1.showInputDialog(null,"Enter new password");
                         rs1=st1.executeQuery("update accounts set password='"+newPass+"' where id='"+user_id+"'");
+                        rs1.close();
                         jOptionPane1.showMessageDialog(null,"Password Changed successfully");
                         
                         
