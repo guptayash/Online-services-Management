@@ -40,6 +40,7 @@ public class viewNewRequest extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -86,6 +87,8 @@ public class viewNewRequest extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,8 +98,10 @@ public class viewNewRequest extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 378, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(67, 67, 67)
@@ -109,7 +114,9 @@ public class viewNewRequest extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
@@ -150,16 +157,23 @@ this.dispose();       // TODO add your handling code here:
             
             Statement st = conn.createStatement();
             ResultSet rs=null;
-            rs=st.executeQuery("Select * from service where counter = 0");
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-            System.out.println(rs);
+          String sk = jLabel2.getText();
+          rs=st.executeQuery("Select shopcode from shopdetails where shopkeeper='"+sk+"'");
+          rs.next();
+          Integer sc=Integer.parseInt(rs.getString(1));
+          ResultSet rs1 = null;
+            rs1 = st.executeQuery("select * from service where shopcode="+sc+" and counter=0");
+            
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs1));
+           
         }
         catch(Exception e){
+            e.getMessage();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Connection conn = null;
+            Connection conn = null;
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
@@ -182,11 +196,17 @@ this.dispose();       // TODO add your handling code here:
             
             Statement st = conn.createStatement();
             ResultSet rs=null;
-            rs=st.executeQuery("Select * from service where counter = 0");
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-            System.out.println(rs);
+            String sk = jLabel2.getText();
+            rs=st.executeQuery("Select shopcode from shopdetails where shopkeeper='"+sk+"'");
+            rs.next();
+            Integer sc=Integer.parseInt(rs.getString(1));
+            ResultSet rs1 = null;
+            rs1 = st.executeQuery("update service set counter = 1 where shopcode="+sc+"");
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs1));
+
         }
         catch(Exception e){
+            e.getMessage();
         }
         
 // TODO add your handling code here:
@@ -231,8 +251,9 @@ this.dispose();       // TODO add your handling code here:
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -79,7 +79,6 @@ public class removeShop extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jOptionPane2 = new javax.swing.JOptionPane();
         jOptionPane1 = new javax.swing.JOptionPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -134,9 +133,7 @@ public class removeShop extends javax.swing.JFrame {
                         .addGap(69, 69, 69))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(230, 230, 230))
+                            .addComponent(jLabel4)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(39, 39, 39)
                                 .addComponent(jLabel5)
@@ -204,15 +201,20 @@ public class removeShop extends javax.swing.JFrame {
         try {
                 
                 Statement st = conn.createStatement();
+                System.out.println("hi");
+
                 ResultSet rs=null;
-                int shopCode= Integer.parseInt(jTextField1.getText());            
+                Integer shopCode= Integer.parseInt(jTextField1.getText()); 
+                System.out.println(shopCode);
                 rs = st.executeQuery("delete from shopdetails where shopcode='"+shopCode+"'");
+                JOptionPane.showMessageDialog(null,"Shop "+jTextField1.getText()+ " Deleted Successfully");
+
                 rs.close();
+
             } catch (Exception e) {
 
                 e.printStackTrace();
             }
-        JOptionPane.showMessageDialog(null,"Shop "+jTextField1.getText()+ " Deleted Successfully");
 
     // TODO add your handling code here:
     
@@ -263,7 +265,6 @@ public class removeShop extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JOptionPane jOptionPane1;
-    private javax.swing.JOptionPane jOptionPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables

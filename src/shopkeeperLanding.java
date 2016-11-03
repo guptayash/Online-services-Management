@@ -1,9 +1,15 @@
 
 import static java.lang.Thread.sleep;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.proteanit.sql.DbUtils;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,6 +23,7 @@ import java.util.logging.Logger;
  */
 public class shopkeeperLanding extends javax.swing.JFrame {
 
+   
     /**
      * Creates new form shopkeeperLanding
      */
@@ -108,6 +115,11 @@ public void CurrentDate(){
         });
 
         jButton3.setText("View Past Bills");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Edit Shop Profile");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -219,9 +231,20 @@ else{
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-viewNewRequest nr=new viewNewRequest();
-nr.setVisible(true);// TODO add your handling code here:
+            viewNewRequest nr = new viewNewRequest();
+            nr.jLabel2.setText(jLabel1.getText());
+            nr.setVisible(true);
+       
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        viewPastBills pb = new viewPastBills();
+        pb.jLabel2.setText(jLabel1.getText());
+        pb.setVisible(true);
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
