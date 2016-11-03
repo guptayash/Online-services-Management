@@ -76,6 +76,7 @@ public class viewInfo extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel20 = new javax.swing.JLabel();
+        jOptionPane2 = new javax.swing.JOptionPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -304,9 +305,17 @@ public class viewInfo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        First_Page frame = new First_Page();
+int reply=jOptionPane2.showConfirmDialog(null,"Do you really want to logout?","Logout Confirmation",jOptionPane2.YES_NO_OPTION);
+if (reply==jOptionPane2.YES_OPTION)
+{
+    First_Page frame = new First_Page();
         frame.setVisible(true);
-        viewInfo.this.dispose();
+        viewInfo.this.dispose(); 
+jOptionPane2.showMessageDialog(null,"Successfully logged out!");
+}
+else{
+    
+}             
 
 
 // TODO add your handling code here:
@@ -376,6 +385,7 @@ public class viewInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JOptionPane jOptionPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField1;
