@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -79,6 +80,7 @@ public class removeShop extends javax.swing.JFrame {
     private void initComponents() {
 
         jOptionPane2 = new javax.swing.JOptionPane();
+        jOptionPane1 = new javax.swing.JOptionPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -175,9 +177,7 @@ public class removeShop extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        adminLanding frame = new adminLanding();
-        frame.setVisible(true);
-        frame.jLabel4.setText("goelprateek5");
+       
         removeShop.this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -212,6 +212,8 @@ public class removeShop extends javax.swing.JFrame {
 
                 e.printStackTrace();
             }
+        JOptionPane.showMessageDialog(null,"Shop "+jTextField1.getText()+ " Deleted Successfully");
+
     // TODO add your handling code here:
     
 // TODO add your handling code here:
@@ -260,6 +262,7 @@ public class removeShop extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JOptionPane jOptionPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
