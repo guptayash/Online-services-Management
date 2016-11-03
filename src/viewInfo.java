@@ -190,7 +190,15 @@ public class viewInfo extends javax.swing.JFrame {
             new String [] {
                 "id", "First Name", "Last Name", "Phone Number", "Email", "Address", "DOB", "Area Code"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
