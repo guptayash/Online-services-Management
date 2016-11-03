@@ -194,7 +194,9 @@ else{
         shopkeeperreg frame = new shopkeeperreg();
         frame.setVisible(true);
         frame.jLabel8.setText(jLabel4.getText());
-        adminLanding.this.dispose();        
+        shopdetails sd=new shopdetails();
+        sd.jLabel12.setText(jLabel4.getText());
+             
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
