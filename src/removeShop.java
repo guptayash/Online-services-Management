@@ -217,7 +217,7 @@ else{
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -235,9 +235,8 @@ else{
                 
                 Statement st = conn.createStatement();
                 ResultSet rs=null;
-                int shopCode= Integer.parseInt(jTextField1.getText());
-                System.out.println(shopCode);               
-                rs = st.executeQuery("delete from shopdetails where shopcode="+shopCode);
+                int shopCode= Integer.parseInt(jTextField1.getText());            
+                rs = st.executeQuery("delete from shopdetails where shopcode='"+shopCode+"'");
                 rs.close();
             } catch (Exception e) {
 
