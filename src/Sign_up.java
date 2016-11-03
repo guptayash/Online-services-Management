@@ -56,7 +56,7 @@ public class Sign_up extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -77,7 +77,7 @@ public class Sign_up extends javax.swing.JFrame {
 
         jLabel7.setText("Password");
 
-        jLabel8.setText("DOB  [Format: DD/MMM/YYYY]");
+        jLabel8.setText("DOB");
 
         jLabel9.setText("Area");
 
@@ -137,7 +137,7 @@ public class Sign_up extends javax.swing.JFrame {
 
         jLabel11.setText("Address");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "North Delhi", "South Delhi", "East Delhi", "West Delhi" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "North Delhi", "South Delhi", "East Delhi", "West Delhi" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
