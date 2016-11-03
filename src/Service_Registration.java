@@ -150,8 +150,6 @@ public class Service_Registration extends javax.swing.JFrame {
             }
         });
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Area");
 
@@ -405,6 +403,7 @@ Edit.setVisible(true);
                 ResultSet rs=null;
                 String user_name=jLabel1.getText();
                 jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Select Area First!"}));
+                jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Select Area First!"}));
                 rs = st.executeQuery("select address, phonenumber  from USERINFO where id='"+user_name+"'");
                 while (rs.next()){
                     jLabel12.setText(rs.getString(1).toUpperCase());
@@ -448,6 +447,8 @@ Edit.setVisible(true);
                 ac++;
                 rs = st.executeQuery("select shopname from shopdetails where areacode = "+ac+"");
                 jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] {}));
+                jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Select Shop Now!"}));
+
 
                 while (rs.next()){
                     String result = rs.getString(1);
@@ -463,6 +464,44 @@ Edit.setVisible(true);
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        Connection conn = null;
+        try {
+            String driverName = "oracle.jdbc.driver.OracleDriver";
+            Class.forName(driverName);
+            String serverName = "myGlobe";
+            String serverPort = "1521";
+            String sid = "XE";
+            String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
+            String username = "DBMS";
+            String password = "DBMS";
+            conn = DriverManager.getConnection(url, username, password);
+
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Could not find the database driver" + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Could not connect to the database" + e.getMessage());
+        }
+        
+        try {
+                
+                Statement st = conn.createStatement();
+                ResultSet rs=null;
+                String sn = (String)jComboBox2.getSelectedItem();
+                rs = st.executeQuery("select products.productNAMe from products join category ON category.categorynum=products.category where category.categorynum=(select productcategory from shopdetails where shopname='"+sn+"')");
+                jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] {}));
+
+                while (rs.next()){
+                    String result = rs.getString(1);
+                    jComboBox3.addItem(result);
+                }
+                
+               rs.close();
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
