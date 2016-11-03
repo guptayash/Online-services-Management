@@ -9,6 +9,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
 
 
@@ -23,6 +26,12 @@ import net.proteanit.sql.DbUtils;
  * @author Prateek
  */
 public class viewInfo extends javax.swing.JFrame {
+    private void filter(String query){
+        DefaultTableModel dm = (DefaultTableModel) jTable1.getModel();
+        TableRowSorter<DefaultTableModel> tr=new TableRowSorter<DefaultTableModel>(dm);
+        jTable1.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(query));
+    }
     public boolean databaru;
     
     private void GetData(){
@@ -126,7 +135,6 @@ public class viewInfo extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -159,12 +167,11 @@ public class viewInfo extends javax.swing.JFrame {
             }
         });
 
-        jLabel21.setText("Enter username: ");
+        jLabel21.setText("Search");
 
-        jButton3.setText("Fetch!");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
             }
         });
 
@@ -212,14 +219,9 @@ public class viewInfo extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(184, 184, 184)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel21)
-                        .addGap(104, 104, 104)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(jButton3)))
+                .addComponent(jLabel21)
+                .addGap(104, 104, 104)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -239,9 +241,7 @@ public class viewInfo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
+                .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(jButton2)
@@ -275,39 +275,6 @@ else{
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-Connection conn = null;
-        try {
-            String driverName = "oracle.jdbc.driver.OracleDriver";
-            Class.forName(driverName);
-            String serverName = "Johnny";
-            String serverPort = "1521";
-            String sid = "XE";
-            String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
-            String username = "DBMS";
-            String password = "DBMS";
-            conn = DriverManager.getConnection(url, username, password);
-
-
-        } catch (ClassNotFoundException e) {
-            System.out.println("Could not find the database driver" + e.getMessage());
-        } catch (SQLException e) {
-            System.out.println("Could not connect to the database" + e.getMessage());
-            
-        }
-        try{
-            
-            Statement st = conn.createStatement();
-            ResultSet rs=null;
-            rs=st.executeQuery("Select id, Fname, Lname, Phonenumber,emailid,address,DOB,areacode from userinfo=''");
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-            System.out.println(rs);
-        }
-        catch(Exception e){
-        }
-            // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 Connection conn = null;
         try {
@@ -339,6 +306,11 @@ Connection conn = null;
         catch(Exception e){
         }        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+String query=jTextField1.getText().toLowerCase();
+filter(query);// TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1KeyReleased
 
     /**
      * @param args the command line arguments
@@ -378,7 +350,6 @@ Connection conn = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;

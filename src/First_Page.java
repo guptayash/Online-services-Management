@@ -1,9 +1,12 @@
 
+import static java.lang.Thread.sleep;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -261,8 +264,10 @@ First_Page.this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-String Pass=jPasswordField1.getText();
-jLabel5.setText(Pass);        // TODO add your handling code here:
+
+        String Pass=jPasswordField1.getText();
+        jLabel5.setText(Pass);        
+    // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
