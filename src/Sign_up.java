@@ -328,8 +328,17 @@ Sign_up.this.dispose();// TODO add your handling code here:
                 new PhoneNumber("+18305429222"),  // from
                 s ).create();
         System.out.println("OTP sent successfully");
-        String CheckOTP=JOptionPane.showInputDialog(null,"Enter the OTP sent to your mobile");
-        int CheckOTPInt = Integer.parseInt(CheckOTP);
+        String CheckOTP=null;
+        String message1="Enter One Time Password:";
+        int CheckOTPInt;
+        int a=3;
+        do {
+        CheckOTP=JOptionPane.showInputDialog(message1);
+        CheckOTPInt = Integer.parseInt(CheckOTP);
+        message1 = "<html><b style='color:red'>Enter One Time Password:</b><br>"+ "Enter Correct OTP, Chances Left to try - "+a;
+        a--;
+    } while(CheckOTPInt!=n && a>=0);
+        
         if (CheckOTPInt==n){
             
         
@@ -338,12 +347,10 @@ Sign_up.this.dispose();// TODO add your handling code here:
             frame.setVisible(true);
             Sign_up.this.dispose();
         }
-        else{
-            JOptionPane.showMessageDialog(null,"Please use a correct OTP");
-        }
         }
         catch (SQLException e) {
             jOptionPane1.showMessageDialog(null,e.getMessage());
+            
             
             try {
                 Statement st = conn.createStatement();
