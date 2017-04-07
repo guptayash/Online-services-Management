@@ -1,9 +1,17 @@
 
+
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,6 +25,8 @@ import java.sql.Statement;
  */
 public class Sign_up extends javax.swing.JFrame {
 
+    public static final String ACCOUNT_SID = "AC2588d628b1ee82c6e9e65bca4d6fc0fb";
+     public static final String AUTH_TOKEN = "ae20afa0c49a7fc25baaf8abdefed6b8";
     /**
      * Creates new form Sign_up
      */
@@ -293,7 +303,7 @@ Sign_up.this.dispose();// TODO add your handling code here:
         String LName = jTextField2.getText();
         long ph = Long.parseLong(jTextField3.getText());
         String email = jTextField4.getText();
-        String id = jTextField5.getText();
+        String id1 = jTextField5.getText();
         String addr = jTextField7.getText();
         String date = jTextField8.getText();
         String pass1 = jPasswordField1.getText();
@@ -304,16 +314,43 @@ Sign_up.this.dispose();// TODO add your handling code here:
         try{
             Statement st = conn.createStatement();
             ResultSet rs=null;
+            rs = st.executeQuery("insert into accounts values('"+id1+"','"+pass1+"','USER')");
+            rs = st.executeQuery("insert into userinfo values('"+id1+"','"+FName+"','"+LName+"',"+ph+",'"+email+"','"+addr+"','"+date+"',"+area+")");
             
-            rs = st.executeQuery("insert into accounts values('"+id+"','"+pass1+"','USER')");
-            rs = st.executeQuery("insert into userinfo values('"+id+"','"+FName+"','"+LName+"',"+ph+",'"+email+"','"+addr+"','"+date+"',"+area+")");
+        //SMS API     
+        Random rand=new Random();
+        int n=rand.nextInt(10000)+1000;
+        
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        String s="Your OTP is "+ n;
+        Message message;
+        message = Message.creator(new PhoneNumber("+919790625878"),  // to
+                new PhoneNumber("+18305429222"),  // from
+                s ).create();
+        System.out.println("OTP sent successfully");
+        String CheckOTP=JOptionPane.showInputDialog(null,"Enter the OTP sent to your mobile");
+        int CheckOTPInt = Integer.parseInt(CheckOTP);
+        if (CheckOTPInt==n){
+            
+        
             jOptionPane1.showMessageDialog(null,"Congratulations!"+"\nSuccessfully Signed Up! Please Login to continue");
             First_Page frame=new First_Page();
             frame.setVisible(true);
             Sign_up.this.dispose();
         }
+        else{
+            JOptionPane.showMessageDialog(null,"Please use a correct OTP");
+        }
+        }
         catch (SQLException e) {
             jOptionPane1.showMessageDialog(null,e.getMessage());
+            
+            try {
+                Statement st = conn.createStatement();
+            ResultSet rs=null;
+                rs=st.executeQuery("delete from accounts where id='"+id1+"'");
+            } catch (SQLException ex) {
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
