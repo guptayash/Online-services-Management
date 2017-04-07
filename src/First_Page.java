@@ -201,7 +201,7 @@ Connection conn = null;
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -291,7 +291,7 @@ Connection conn = null;
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;

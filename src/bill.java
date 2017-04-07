@@ -330,7 +330,7 @@ public class bill extends javax.swing.JFrame {
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -354,7 +354,7 @@ public class bill extends javax.swing.JFrame {
                 String prod = jLabel22.getText();
                 String model = jLabel23.getText();
                 Double cost = Double.parseDouble(jLabel25.getText());
-                st.executeQuery("insert into service values("+billno+",'"+id+"',"+sc+",'"+prod+"',"+cost+",0,'"+model+"')");
+                st.executeQuery("insert into service values("+billno+",'"+id+"',"+sc+",'"+prod+"',"+cost+",0)");
         } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -371,7 +371,7 @@ public class bill extends javax.swing.JFrame {
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;

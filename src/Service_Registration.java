@@ -317,7 +317,7 @@ System.exit(0);        // TODO add your handling code here:
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -406,7 +406,7 @@ Edit.setVisible(true);
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -448,7 +448,7 @@ Edit.setVisible(true);
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
@@ -492,7 +492,7 @@ Edit.setVisible(true);
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;

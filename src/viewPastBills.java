@@ -40,7 +40,7 @@ public class viewPastBills extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -125,7 +125,7 @@ Connection conn = null;
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;

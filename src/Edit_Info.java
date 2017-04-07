@@ -243,12 +243,12 @@ Edit_Info.this.dispose();// TODO add your handling code here:
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
-            String username = "DBMS";
-            String password = "DBMS";
+            String username = "SE";
+            String password = "SE";
             conn = DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException e) {
             System.out.println("Could not find the database driver" + e.getMessage());
@@ -303,12 +303,12 @@ jPasswordField1.setEditable(false);
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
-            String username = "DBMS";
-            String password = "DBMS";
+            String username = "SE";
+            String password = "SE";
             conn = DriverManager.getConnection(url, username, password);
 
         } catch (ClassNotFoundException e) {
@@ -367,12 +367,12 @@ jPasswordField1.setEditable(false);
         try {
             String driverName = "oracle.jdbc.driver.OracleDriver";
             Class.forName(driverName);
-            String serverName = "myGlobe";
+            String serverName = "Johnny";
             String serverPort = "1521";
             String sid = "XE";
             String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
-            String username = "DBMS";
-            String password = "DBMS";
+            String username = "SE";
+            String password = "SE";
             conn = DriverManager.getConnection(url, username, password);
 ;
 
