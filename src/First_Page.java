@@ -214,7 +214,8 @@ Connection conn = null;
             System.out.println("Could not find the database driver" + e.getMessage());
         } catch (SQLException e) {
             System.out.println("Could not connect to the database" + e.getMessage());
-            jLabel4.setText("Invalid Credentials; Logon Denied!");
+            
+            
         }
         try {
                 Statement st = conn.createStatement();
@@ -252,8 +253,9 @@ Connection conn = null;
                     }
                     else
                     {
-                        jLabel4.setText("Invalid credential! Login Denied!");
-                    
+                        JOptionPane.showMessageDialog(null,"Invalid Credentials; Logon Denied!","Unauthorized attempt", JOptionPane.ERROR_MESSAGE);
+                        break;
+                        
                     }
                     }
                 
