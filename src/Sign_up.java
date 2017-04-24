@@ -295,6 +295,7 @@ Sign_up.this.dispose();// TODO add your handling code here:
         String FName = jTextField1.getText();
         String LName = jTextField2.getText();
         long ph = Long.parseLong(jTextField3.getText());
+        String phone=Long.toString(ph);
         String email = jTextField4.getText();
         String id1 = jTextField5.getText();
         String addr = jTextField7.getText();
@@ -317,12 +318,14 @@ Sign_up.this.dispose();// TODO add your handling code here:
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         String s="Your OTP is "+ n;
         Message message;
-        message = Message.creator(new PhoneNumber("+919790625878"),  // to
+        phone="+91"+phone;
+        message = Message.creator(new PhoneNumber(phone),  // to
                 new PhoneNumber("+18305429222"),  // from
                 s ).create();
         System.out.println("OTP sent successfully");
         String CheckOTP=null;
         String message1="Enter One Time Password:";
+        
         int CheckOTPInt;
         int a=3;
         do {
@@ -330,7 +333,8 @@ Sign_up.this.dispose();// TODO add your handling code here:
         CheckOTPInt = Integer.parseInt(CheckOTP);
         message1 = "<html><b style='color:red'>Enter One Time Password:</b><br>"+ "Enter Correct OTP, Chances Left to try - "+a;
         a--;
-    } while(CheckOTPInt!=n && a>=0);
+        
+    } while(CheckOTPInt!=n && a>=0 );
         if (a<0){
         JOptionPane.showMessageDialog(null,"Maximum number of attempts exceeded!");
         
